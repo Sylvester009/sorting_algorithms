@@ -3,11 +3,11 @@
 #include <stdlib.h>
 
 /**
- * subarraymerge - Sort a subarray of integers.
- * @subarray: A subarray of an array of integers to sort.
- * @buffer: A buffer to store the sorted subarray.
- * @Beg: The front index of the array.
- * @middle: The middle index of the array.
+ * subarraymerge - it Sort  subarrays  of int type.
+ * @subarray: this is a subarray of an array of int type.
+ * @buffer: thi is a  buffer to store the sorted subarray.
+ * @Beg: This is the front index of the array.
+ * @middle: This is the  middle index of the array.
  * @End: The back index of the array.
  */
 void subarraymerge(int *subarray, int *buffer, size_t Beg,
@@ -40,11 +40,12 @@ print_array(subarray + Beg, End - Beg);
 }
 
 /**
- * sortrecursive_merge - Implement the merge sort algorithm through recursion.
- * @subarray: A subarray of an array of integers to sort.
- * @buffer: A buffer to store the sorted result.
- * @Beg: The front index of the subarray.
- * @End: The back index of the subarray.
+ * sortrecursive_merge - this Implement merging  sort algorithm
+ * through recursion.
+ * @subarray: this is a  subarray of an array of int type.
+ * @buffer: this is the buffer to store the sorted result.
+ * @Beg: This is  front index of the subarray.
+ * @End: This is  back index of the subarray.
  */
 void sortrecursive_merge(int *subarray, int *buffer, size_t Beg, size_t End)
 {
@@ -60,12 +61,12 @@ subarraymerge(subarray, buffer, Beg, middle, End);
 }
 
 /**
- * merge_sort - Sort an array of integers in ascending
- *              order using the merge sort algorithm.
- * @array: An array of integers.
- * @size: The size of the array.
+ * merge_sort - this will definitely Sort arrays of int type
+ * in ascending order using the merge sort algorithm.
+ * @array: this is an  array of int type.
+ * @size: This is the size of the array.
  *
- * Description: Implements the top-down merge sort algorithm.
+ * Description: it Implements the merging sort algorithm.
  */
 void merge_sort(int *array, size_t size)
 {
