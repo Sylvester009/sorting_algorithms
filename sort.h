@@ -38,7 +38,7 @@ void quick_sort(int *array, size_t size);
 
 /* quick_sort() helpers */
 int partitionArray(int *array, int left, int right, size_t size);
-void quicksort(int *array, int low, int high, size_t size);
+void quicksortArray(int *array, int left, int right, size_t size);
 
 /* advanced tasks */
 void shell_sort(int *array, size_t size);
