@@ -2,17 +2,17 @@
 
 
 /**
- * swap_ints - Swap two integers in an array.
- * @a: The first integer to swap.
- * @b: The second integer to swap.
+ * swap_ints - this is the Swap between two int in an array.
+ * @current: The first int to be swap.
+ * @previous: The second int to be swap.
  */
-void swap_ints(int *a, int *b)
+void integerswapping(int *previous, int *current)
 {
 	int tmp;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	tmp = *previous;
+	*previous = *current;
+	*current = tmp;
 }
 
 /**
@@ -37,7 +37,7 @@ void max_heapify(int *array, size_t size, size_t base, size_t root)
 
 	if (large != root)
 	{
-		swap_ints(array + root, array + large);
+		integerswapping(array + root, array + large);
 		print_array(array, size);
 		max_heapify(array, size, base, large);
 	}
@@ -64,7 +64,7 @@ void heap_sort(int *array, size_t size)
 
 	for (i = size - 1; i > 0; i--)
 	{
-		swap_ints(array, array + i);
+		integerswapping(array, array + i);
 		print_array(array, size);
 		max_heapify(array, size, i, 0);
 	}
