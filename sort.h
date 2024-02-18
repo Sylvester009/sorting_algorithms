@@ -2,6 +2,7 @@
 #define SORT_H
 #include <stddef.h>
 
+
 /**
  * enum bool_e - manual definition of booleans, in case C99 stdbool.h not
  * available
