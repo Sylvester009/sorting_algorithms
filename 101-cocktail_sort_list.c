@@ -9,14 +9,16 @@
 void swap_adjacent(listint_t **list, listint_t *tail, listint_t *head)
 {
 listint_t *swap;
-
-if (tail->prev != NULL) {
-    tail->prev->next = head;
-} else {
-    *list = head;
+if (tail->prev != NULL)
+{
+tail->prev->next = head;
 }
-if (head->next != NULL) {
-    head->next->prev = tail;
+else {
+*list = head;
+}
+if (head->next != NULL)
+{
+head->next->prev = tail;
 }
 head->prev = tail->prev;
 tail->prev = head;
