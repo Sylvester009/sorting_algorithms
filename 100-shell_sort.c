@@ -15,7 +15,7 @@ void shell_sort(int *array, size_t size)
         return;
 
     num = (int)size;
-    K_max = 1; // Initialize K_max
+    K_max = 1;
 
     for (space = K_max; space > 0; space = (space - 1) / 3)
     {
