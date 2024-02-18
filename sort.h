@@ -54,12 +54,8 @@ void swap_adjacent(listint_t **list, listint_t *tail, listint_t *head);
 
 
 void sortrecursive_merge(int *subarray, int *buffer, size_t Beg, size_t End);
-void subarraymerge(int *subarray, int *buffer, size_t Beg, size_t middle, size_t End);
-/*
-void PrintArray(int *array, int iBeg, int iEnd);
-void CopyArray(int *array, int iBeg, int iEnd, int *work_copy);
-void TopDownMerge(int *array, int iBeg, int iMid, int iEnd, int *work_copy);
-void TopDownSplitMerge(int *work_copy, int iBeg, int iEnd, int *array); */
+void subarraymerge(int *subarray, int *buffer, size_t Beg,
+size_t middle, size_t End);
 
 /* heap_sort() helpers */
 int iParent(int i);
