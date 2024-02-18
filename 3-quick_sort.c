@@ -1,14 +1,14 @@
 #include "sort.h"
 
 /**
- * partitionArray - scans a partition of an array of integers for values less than
- * pivot value, and swaps them with first value in partition, then swaps pivot
- * value with first value in partition
- * @array: array of integers to be sorted
- * @left: index in array that begins partition
- * @right: index in array that ends partition
- * @size: amount of elements in array
- * Return: new index at which to start new recursive partition
+ * partitionArray - it scans a partition of arrays of int type for vals
+ * less than pivot value, and swaps them with first value in partition.
+ * @array: it array of int type to be sorted
+ * @left: this is the index in the array that begins partition
+ * @right: this is the index in the array that ends partition
+ * @size: the amount of elements in an array
+ * Return: it returns new index to which it start new
+ * recursive partition
  */
 int partitionArray(int *array, int left, int right, size_t size)
 {
@@ -39,12 +39,12 @@ return (index);
 }
 
 /**
- * quicksortArray - recursively sorts array of integers by separating into two
- * partitions, using Lomuto quick sort
- * @array: array of integers to be sorted
- * @left: index in array that begins partition
- * @right: index in array that ends partition
- * @size: amount of elements in array
+ * quicksortArray - it is the recursively sorts of an array of
+ * int type which separating into two partitions using quick sort
+ * @array: it array of int type to be sorted
+ * @left: this is the index in the array that begins partition
+ * @right: this is the index in the array that ends partition
+ * @size: the amount of elements in an array
  */
 void quicksortArray(int *array, int left, int right, size_t size)
 {
@@ -58,10 +58,10 @@ void quicksortArray(int *array, int left, int right, size_t size)
 }
 
 /**
- * quick_sort - sorts an array of integers in ascending order using a quick
- * sort algorithm, with Lomuto partition scheme
- * @array: array of integers to be sorted
- * @size: amount of elements in array
+ * quick_sort - it sorts an array of int type in an ascending order
+ * this uses a quick sort algorithm methode
+ * @array: it array of int type to be sorted
+ * @size: the amount of elements in an array
  */
 void quick_sort(int *array, size_t size)
 {
