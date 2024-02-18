@@ -13,25 +13,29 @@
 void subarraymerge(int *subarray, int *buffer, size_t Beg,
 size_t middle, size_t End)
 {
-	size_t i, j, k = 0;
+    size_t i = Beg, j = middle, k = 0;
 
-	printf("Merging...\n[left]: ");
-	print_array(subarray + Beg, middle - Beg);
+    printf("Merging...\n[left]: ");
+    print_array(subarray + Beg, middle - Beg);
 
-	printf("[right]: ");
-	print_array(subarray + middle, End - middle);
+    printf("[right]: ");
+    print_array(subarray + middle, End - middle);
 
-	for (i = Beg, j = middle; i < middle && j < End; k++)
-		buffer[k] = (subarray[i] < subarray[j]) ? subarray[i++] : subarray[j++];
-	for (; i < middle; i++)
-		buffer[k++] = subarray[i];
-	for (; j < End; j++)
-		buffer[k++] = subarray[j];
-	for (i = Beg, k = 0; i < End; i++)
-		subarray[i] = buffer[k++];
+    while (i < middle && j < End) {
+        buffer[k++] = (subarray[i] < subarray[j]) ? subarray[i++] : subarray[j++];
+    }
+    while (i < middle) {
+        buffer[k++] = subarray[i++];
+    }
+    while (j < End) {
+        buffer[k++] = subarray[j++];
+    }
+    for (i = Beg, k = 0; i < End; i++, k++) {
+        subarray[i] = buffer[k];
+    }
 
-	printf("[Done]: ");
-	print_array(subarray + Beg, End - Beg);
+    printf("[Done]: ");
+    print_array(subarray + Beg, End - Beg);
 }
 
 /**
