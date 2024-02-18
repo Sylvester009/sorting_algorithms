@@ -50,7 +50,7 @@ void sortrecursive_merge(int *subarray, int *buffer, size_t Beg, size_t End)
 {
 size_t middle;
 
-while (End - Beg > 1)
+if (End - Beg > 1)
 {
 middle = Beg + (End - Beg) / 2;
 sortrecursive_merge(subarray, buffer, Beg, middle);
