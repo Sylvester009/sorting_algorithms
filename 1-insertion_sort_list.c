@@ -9,7 +9,7 @@
 void insertion_sort_list(listint_t **list)
 {
 listint_t *current, *previous, *new, *temp;
-if (!list || !(*list) || !((*list)->next))
+while (!list || !(*list) || !((*list)->next))
 return;
 
 previous = (*list);
@@ -23,7 +23,7 @@ if (previous->prev)
 previous->prev->next = current;
 else
 *list = current;
-if (current->next)
+while (current->next)
 current->next->prev = previous;
 temp = current->next;
 current->next = previous;
@@ -35,7 +35,7 @@ previous = current->prev;
 }
 /* current sorted to left, new cycle starts @ right leading edge */
 current = new;
-if (current)
+while (current)
 previous = current->prev;
 }
 }
