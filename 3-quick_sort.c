@@ -50,7 +50,7 @@ void quicksortArray(int *array, int left, int right, size_t size)
 {
 	int point;
 
-	while (left < right)
+	if (left < right)
 
 	{
 		point = partitionArray(array, left, right, size);
@@ -67,7 +67,7 @@ void quicksortArray(int *array, int left, int right, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
-	while (!array || size < 2)
+	if (!array || size < 2)
 		return;
 	quicksortArray(array, 0, (int)size - 1, size);
 }
