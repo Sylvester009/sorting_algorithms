@@ -36,11 +36,13 @@ void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 
-/* quick_sort() helpers */
+/* helpers */
 int partitionArray(int *array, int left, int right, size_t size);
 void quicksortArray(int *array, int left, int right, size_t size);
+void swap_ints(int *previous, int *current)
 
-/* advanced tasks */
+
+
 void shell_sort(int *array, size_t size);
 void cocktail_sort_list(listint_t **list);
 void counting_sort(int *array, size_t size);
