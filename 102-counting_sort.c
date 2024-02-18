@@ -9,30 +9,39 @@
  */
 void counting_sort(int *array, size_t size)
 {
-    int i, index, max;
+    int index, sum, max;
     int *arg_c, *output;
 
     if (!array || size < 2)
         return;
 
     max = array[0];
-    for (i = 0; i < (int)size; i++)
+    index = 0;
+    while (index < (int)size)
     {
-        if (array[i] > max)
-            max = array[i];
+        if (array[index] > max)
+            max = array[index];
+        index++;
     }
 
     arg_c = calloc((max + 1), sizeof(int));
     if (!arg_c)
         return;
 
-    for (i = 0; i < (int)size; i++)
-        arg_c[array[i]]++;
-
-    for (i = 0, index = 0; i < max + 1; i++)
+    index = 0;
+    while (index < (int)size)
     {
-        index = arg_c[i] + index;
-        arg_c[i] = index;
+        arg_c[array[index]]++;
+        index++;
+    }
+
+    index = 0;
+    sum = 0;
+    while (index < max + 1)
+    {
+        sum = arg_c[index] + sum;
+        arg_c[index] = sum;
+        index++;
     }
     print_array(arg_c, max + 1);
 
@@ -40,15 +49,20 @@ void counting_sort(int *array, size_t size)
     if (!output)
         return;
 
-    for (i = (int)size - 1; i >= 0; i--)
+    index = 0;
+    while (index < (int)size)
     {
-        output[arg_c[array[i]] - 1] = array[i];
-        arg_c[array[i]]--;
+        output[arg_c[array[index]] - 1] = array[index];
+        arg_c[array[index]]--;
+        index++;
     }
 
-    for (i = 0; i < (int)size; i++)
-        array[i] = output[i];
-
+    index = 0;
+    while (index < (int)size)
+    {
+        array[index] = output[index];
+        index++;
+    }
     free(arg_c);
     free(output);
 }
