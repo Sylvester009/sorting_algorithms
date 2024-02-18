@@ -48,9 +48,9 @@ void sortrecursive_merge(int *subarray, int *buffer, size_t Beg, size_t End)
 	if (back - Beg > 1)
 	{
 		mid = front + (back - front) / 2;
-		merge_sort_recursive(subarray, buffer, Beg, middle);
-		merge_sort_recursive(subarray, buffer, middle, End);
-		merge_subarr(subarray, buffer, Beg, middle, End`);
+		sortrecursive_merge(subarray, buffer, Beg, middle);
+		sortrecursive_merge(subarray, buffer, middle, End);
+		subarraymerge(subarray, buffer, Beg, middle, End`);
 	}
 }
 
@@ -73,7 +73,7 @@ void merge_sort(int *array, size_t size)
 	if (buffer == NULL)
 		return;
 
-	merge_sort_recursive(array, buffer, 0, size);
+	sortrecursive_merge(array, buffer, 0, size);
 
 	free(buffer);
 }
