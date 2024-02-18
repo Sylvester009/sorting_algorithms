@@ -1,36 +1,47 @@
 #include "sort.h"
 
 /**
- * shell_sort - this will sort arrays of int type
- * in an ascending order using a shell sort algorithm methode ,
- * with space sizes determined by a decreasing of Knuth seqeuence
- * @array: this is the array of integers to be sorted
- * @size: the amount of elements in  an array
+ * swap_ints - this is the Swap between two int in an array.
+ * @current: The first int to be swap.
+ * @previous: The second int to be swap.
  */
+void swap_ints(int *previous, int *current)
+{
+	int tmp;
 
+	tmp = *previous;
+	*previous = *current;
+	*current = tmp;
+}
+
+/**
+ * shell_sort - Sort an array of integers in ascending
+ *              order using the shell sort algorithm.
+ * @array: An array of integers.
+ * @size: The size of the array.
+ *
+ * Description: Uses the Knuth interval sequence.
+ */
 void shell_sort(int *array, size_t size)
 {
-int index, j_index, space, num, K_max, temp;
+size_t space, index, j_index;
 
-while (!array || size < 2)
+while (array == NULL || size < 2)
 return;
 
-num = (int)size;
-for (space = 1; space < num; space = (space * 3) + 1)
+for (space = 1; space < (size / 3);)
+space = space * 3 + 1;
+
+for (; space >= 1; space /= 3)
 {
-K_max = space;
+for (index = space; index < size; index++)
+{
+j_index = index;
+if (j_index >= space && array[j_index - space] > array[j_index])
+{
+swap_ints(array + j_index, array + (j_index - space));
+j_index -= space;
 }
-for (space = K_max; space > 0; space = (space - 1) / 3)
-{
-for (index = space; index < num; index++)
-{
-temp = array[index];
-for (j_index = index; j_index >= space && array[j_index - space] >
-temp; j_index -= space)
-{
-array[j_index] = array[j_index - space];
-}
-array[j_index] = temp;
 }
 print_array(array, size);
 }
