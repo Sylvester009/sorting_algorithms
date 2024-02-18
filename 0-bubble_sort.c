@@ -23,7 +23,7 @@ while (swapped)
 swapped = false;
 for (i = 1; i < num; i++)
 {
-while (array[i - 1] > array[i])
+if (array[i - 1] > array[i])
 {
 temp = array[i - 1];
 array[i - 1] = array[i];
@@ -32,7 +32,6 @@ swapped = true;
 print_array(array, size);
 }
 }
-
 num--;
 }
 }
