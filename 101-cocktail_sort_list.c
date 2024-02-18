@@ -46,7 +46,7 @@ void cocktail_sort_list(listint_t **list)
 		{
 			if (temp->next->n < temp->n)
 			{
-				dll_adj_swap(list, temp, temp->next);
+				swap_adjacent(list, temp, temp->next);
 				swapped_f = true;
 			}
 			else
@@ -61,7 +61,7 @@ void cocktail_sort_list(listint_t **list)
 		{
 			if (temp->n < temp->prev->n)
 			{
-				dll_adj_swap(list, temp->prev, temp);
+				swap_adjacent(list, temp->prev, temp);
 				swapped_b = true;
 			}
 			else
