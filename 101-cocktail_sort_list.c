@@ -3,24 +3,24 @@
 /**
  * dll_adj_swap - swaps two adjacent nodes of a doubly linked list
  * @list: doubly linked list of integers to be sorted
- * @left: node closer to head, right->prev
- * @right: node closer to tail, left->next
+ * @tail: node closer to head, right->prev
+ * @head: node closer to tail, left->next
  */
-void dll_adj_swap(listint_t **list, listint_t *left, listint_t *right)
+void swap_adjacent(listint_t **list, listint_t *tail, listint_t *head)
 {
 	listint_t *swap;
 
-	if (left->prev)
-		left->prev->next = right;
+	if (tail->prev)
+		tail->prev->next = head;
 	else
-		*list = right;
-	if (right->next)
-		right->next->prev = left;
-	right->prev = left->prev;
-	left->prev = right;
-	swap = right;
-	left->next = right->next;
-	swap->next = left;
+		*list = head;
+	while (head->next)
+		head->next->prev = tail;
+	head->prev = tail->prev;
+	tail->prev = head;
+	swap = head;
+	tail->next = head->next;
+	swap->next = tail;
 
 	print_list(*list);
 }
