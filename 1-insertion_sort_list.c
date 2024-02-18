@@ -9,12 +9,12 @@
 void insertion_sort_list(listint_t **list)
 {
 listint_t *current, *previous, *new, *temp;
-while (!list || !(*list) || !((*list)->next))
+if (!list || !(*list) || !((*list)->next))
 return;
 
 previous = (*list);
 current = (*list)->next;
-while (current)
+if (current)
 {
 new = current->next;
 while (previous && current->n < previous->n)
@@ -33,7 +33,7 @@ previous->prev = current;
 print_list(*list);
 previous = current->prev;
 }
-/* current sorted to left, new cycle starts @ right leading edge */
+/* current sorted to left */
 current = new;
 while (current)
 previous = current->prev;
