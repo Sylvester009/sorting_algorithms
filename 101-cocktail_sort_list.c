@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * dll_adj_swap - swaps two adjacent nodes of a doubly linked list
+ * swap_adjacent - swaps two adjacent nodes of a doubly linked list
  * @list: doubly linked list of integers to be sorted
  * @tail: node closer to head, right->prev
  * @head: node closer to tail, left->next
