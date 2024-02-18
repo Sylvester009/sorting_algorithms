@@ -1,10 +1,10 @@
 #include "sort.h"
 
 /**
- * swap_adjacent - swaps two adjacent nodes of a doubly linked list
- * @list: doubly linked list of integers to be sorted
- * @tail: node closer to head, right->prev
- * @head: node closer to tail, left->next
+ * swap_adjacent - it swaps two adjacent nodes
+ * @list: doubly_linked list of int type to be sorted
+ * @tail: it is node closer to head
+ * @head: this is node closer to tail
  */
 void swap_adjacent(listint_t **list, listint_t *tail, listint_t *head)
 {
@@ -26,14 +26,13 @@ tail->prev = head;
 swap = head;
 tail->next = head->next;
 swap->next = tail;
-
 print_list(*list);
 }
 
 /**
- * cocktail_sort_list - sorts a doubly linked list of integers in ascending
- * order using an cocktail shaker sort algorithm
- * @list: doubly linked list of integers to be sorted
+ * cocktail_sort_list - it is sorts a doubly_linked list of int type
+ * in ascending order
+ * @list: doubly_linked list of intm type to be sorted
  */
 void cocktail_sort_list(listint_t **list)
 {
