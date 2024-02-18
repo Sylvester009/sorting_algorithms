@@ -7,28 +7,39 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-listint_t *current, *sorted, *temp;
-if (!list || !(*list) || !((*list)->next))
-return;
-/* Initialize the sorted sublist with the first node */
-sorted = (*list)->next;
-if (sorted)
-{
-current = sorted;
-sorted = sorted->next;
-while (current->prev && current->n < current->prev->n)
-{
-temp = current->prev;
-current->prev = temp->prev;
-temp->next = current->next;
-current->next = temp;
-temp->prev = current;
-while  (temp->next)
-temp->next->prev = temp;
+    listint_t *current, *previous, *next_node, *temp;
 
-while (!current->prev)
-*list = current;
-print_list(*list);
-}
-}
+    while (!list || !(*list) || !((*list)->next))
+        return;
+
+    current = (*list);
+    next_node = (*list)->next;
+
+    while (next_node)
+    {
+        previous = current;
+        current = next_node;
+        next_node = next_node->next;
+
+        if (previous && current->n < previous->n)
+        {
+            if (previous->prev)
+                previous->prev->next = current;
+            else
+                *list = current;
+
+            while (current->next)
+                current->next->prev = previous;
+
+            temp = current->next;
+            current->next = previous;
+            current->prev = previous->prev;
+            previous->next = temp;
+            previous->prev = current;
+
+            print_list(*list);
+
+            previous = current->prev;
+        }
+    }
 }
