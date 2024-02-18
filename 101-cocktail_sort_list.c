@@ -15,11 +15,9 @@ if (tail->prev != NULL) {
 } else {
     *list = head;
 }
-
 if (head->next != NULL) {
     head->next->prev = tail;
 }
-
 head->prev = tail->prev;
 tail->prev = head;
 swap = head;
@@ -27,6 +25,7 @@ tail->next = head->next;
 swap->next = tail;
 
 print_list(*list);
+}
 
 /**
  * cocktail_sort_list - sorts a doubly linked list of integers in ascending
