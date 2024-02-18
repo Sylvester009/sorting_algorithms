@@ -13,7 +13,8 @@ if (tail->prev != NULL)
 {
 tail->prev->next = head;
 }
-else {
+else
+{
 *list = head;
 }
 if (head->next != NULL)
@@ -52,7 +53,8 @@ if (temp->next->n < temp->n)
 swap_adjacent(list, temp, temp->next);
 fowardswapped = true;
 }
-else {
+else
+{
 temp = temp->next;
 }
 }
