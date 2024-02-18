@@ -34,42 +34,51 @@ print_list(*list);
  */
 void cocktail_sort_list(listint_t **list)
 {
-	bool swapped_f, swapped_b;
-	int shake_range = 1000000, checks;
-	listint_t *temp;
+bool forwardSwapped, backwardSwapped;
+int s_Range = 1000000, checks;
+listint_t *temp;
 
-	if (!list || !(*list) || !(*list)->next)
-		return;
+if (!list || !(*list) || !(*list)->next)
+    return;
 
-	temp = *list;
-	do {
-		swapped_f = swapped_b = false;
-		for (checks = 0; temp->next && checks < shake_range; checks++)
-		{
-			if (temp->next->n < temp->n)
-			{
-				swap_adjacent(list, temp, temp->next);
-				swapped_f = true;
-			}
-			else
-				temp = temp->next;
-		}
-		if (!temp->next)  /* first loop, measuring list */
-			shake_range = checks;
-		if (swapped_f)
-			temp = temp->prev;
-		shake_range--;
-		for (checks = 0; temp->prev && checks < shake_range; checks++)
-		{
-			if (temp->n < temp->prev->n)
-			{
-				swap_adjacent(list, temp->prev, temp);
-				swapped_b = true;
-			}
-			else
-				temp = temp->prev;
-		}
-		if (swapped_b)
-			temp = temp->next;
-	} while (swapped_f || swapped_b);
+temp = *list;
+forwardSwapped = backwardSwapped = true;
+
+while (forwardSwapped || backwardSwapped) {
+    forwardSwapped = backwardSwapped = false;
+    temp = *list;
+
+    for (checks = 0; temp->next && checks < s_Range; checks++)
+    {
+        if (temp->next->n < temp->n)
+        {
+            swapAdjacent(list, temp, temp->next);
+            forwardSwapped = true;
+        }
+        else
+            temp = temp->next;
+    }
+
+    s_Range = checks;
+
+    if (forwardSwapped) {
+        temp = temp->prev;
+        backwardSwapped = true;
+    }
+
+    s_Range--;
+
+    for (checks = 0; temp->prev && checks < s_Range; checks++)
+    {
+        if (temp->n < temp->prev->n)
+        {
+            swapAdjacent(list, temp->prev, temp);
+            backwardSwapped = true;
+        }
+        else
+            temp = temp->prev;
+    }
+
+    if (backwardSwapped)
+        temp = temp->next;
 }
