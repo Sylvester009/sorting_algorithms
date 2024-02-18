@@ -35,14 +35,6 @@ void bubble_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
-
-/* helpers */
-int partitionArray(int *array, int left, int right, size_t size);
-void quicksortArray(int *array, int left, int right, size_t size);
-void swap_ints(int *previous, int *current);
-
-
-
 void shell_sort(int *array, size_t size);
 void cocktail_sort_list(listint_t **list);
 void counting_sort(int *array, size_t size);
@@ -51,10 +43,12 @@ void heap_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
 void bitonic_sort(int *array, size_t size);
 void quick_sort_hoare(int *array, size_t size);
-/* void sort_deck(deck_node_t **deck); */
 
-/* cocktail_sort_list() helper */
-void dll_adj_swap(listint_t **list, listint_t *left, listint_t *right);
+/* helpers */
+int partitionArray(int *array, int left, int right, size_t size);
+void quicksortArray(int *array, int left, int right, size_t size);
+void swap_ints(int *previous, int *current);
+void swap_adjacent(listint_t **list, listint_t *left, listint_t *right);
 
 /* merge_sort() helpers */
 void PrintArray(int *array, int iBeg, int iEnd);
