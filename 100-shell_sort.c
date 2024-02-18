@@ -13,6 +13,7 @@ void shell_sort(int *array, size_t size) {
     int num = (int)size;
     int space = 1;
     int K_max = 1;
+    int index
     
     if (!array || size < 2)
         return;
@@ -23,7 +24,7 @@ void shell_sort(int *array, size_t size) {
     }
 
     while (space > 0) {
-        for (int index = space; index < num; index++) {
+        for (index = space; index < num; index++) {
             temp = array[index];
 
             j_index = index;
