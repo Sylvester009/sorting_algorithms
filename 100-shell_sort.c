@@ -1,10 +1,11 @@
 #include "sort.h"
 
 /**
- * shell_sort - sorts an array of integers in ascending order using a shell
- * sort algorithm, with gap sizes determined by a decreasing Knuth seqeuence
- * @array: array of integers to be sorted
- * @size: amount of elements in array
+ * shell_sort - this will sort arrays of int type
+ * in an ascending order using a shell sort algorithm methode ,
+ * with space sizes determined by a decreasing of Knuth seqeuence
+ * @array: this is the array of integers to be sorted
+ * @size: the amount of elements in  an array
  */
 
 void shell_sort(int *array, size_t size)
