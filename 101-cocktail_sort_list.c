@@ -8,22 +8,25 @@
  */
 void swap_adjacent(listint_t **list, listint_t *tail, listint_t *head)
 {
-	listint_t *swap;
+listint_t *swap;
 
-	if (tail->prev)
-		tail->prev->next = head;
-	else
-		*list = head;
-	if (head->next)
-	head->next->prev = tail;
-	head->prev = tail->prev;
-	tail->prev = head;
-	swap = head;
-	tail->next = head->next;
-	swap->next = tail;
-
-	print_list(*list);
+if (tail->prev != NULL) {
+    tail->prev->next = head;
+} else {
+    *list = head;
 }
+
+if (head->next != NULL) {
+    head->next->prev = tail;
+}
+
+head->prev = tail->prev;
+tail->prev = head;
+swap = head;
+tail->next = head->next;
+swap->next = tail;
+
+print_list(*list);
 
 /**
  * cocktail_sort_list - sorts a doubly linked list of integers in ascending
