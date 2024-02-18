@@ -48,19 +48,18 @@ void quick_sort_hoare(int *array, size_t size);
 /* helpers */
 int partitionArray(int *array, int left, int right, size_t size);
 void quicksortArray(int *array, int left, int right, size_t size);
-void swap_ints(int *previous, int *current);
-
+void integerswapping(int *previous, int *previous);
 void swap_adjacent(listint_t **list, listint_t *tail, listint_t *head);
-
-
 void sortrecursive_merge(int *subarray, int *buffer, size_t Beg, size_t End);
 void subarraymerge(int *subarray, int *buffer, size_t Beg,
 size_t middle, size_t End);
+void ConvertToHeap(int *array, size_t size, size_t start, size_t end);
+void heapsorter(int *array, size_t size);
 
-/* heap_sort() helpers */
+/* heap_sort() helpers 
 int iParent(int i);
 int iLeftChild(int i);
 void ConvertToHeap(int *array, size_t size);
-void SiftDown(int *array, size_t size, int start, int end);
+void SiftDown(int *array, size_t size, int start, int end);*/
 
 #endif /* SORT_H */
