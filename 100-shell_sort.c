@@ -11,21 +11,28 @@ void shell_sort(int *array, size_t size)
 
 
     int num = static_cast<int>(size);
-    int space, index, j_index, temp;
-	
-    if (!array || size < 2)
-        return;
-    for (space = num / 2; space > 0; space /= 2)
+    int space = 1;
+if (!array || size < 2)
+return;
+    while (space < num / 3)
     {
-        for (index = space; index < num; index++)
+        space = space * 3 + 1;
+    }
+
+    while (space >= 1)
+    {
+        for (int index = space; index < num; ++index)
         {
-            temp = array[index];
-            for (j_index = index; j_index >= space && array[j_index - space] > temp; j_index -= space)
+            int temp = array[index];
+            int j_index = index;
+            while (j_index >= space && array[j_index - space] > temp)
             {
                 array[j_index] = array[j_index - space];
+                j_index -= space;
             }
             array[j_index] = temp;
         }
+        print_array(array, size);
+        space = (space - 1) / 3;
     }
-    print_array(array, size);
 }
