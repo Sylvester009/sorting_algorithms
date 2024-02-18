@@ -48,7 +48,7 @@ void quick_sort_hoare(int *array, size_t size);
 int partitionArray(int *array, int left, int right, size_t size);
 void quicksortArray(int *array, int left, int right, size_t size);
 void swap_ints(int *previous, int *current);
-void swap_adjacent(listint_t **list, listint_t *left, listint_t *right);
+void swap_adjacent(listint_t **list, listint_t *tail, listint_t *head);
 
 /* merge_sort() helpers */
 void PrintArray(int *array, int iBeg, int iEnd);
