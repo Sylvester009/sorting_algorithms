@@ -8,31 +8,34 @@
  */
 void shell_sort(int *array, size_t size)
 {
+  
 
-
-    int num = static_cast<int>(size);
-    int space = 1;
-if (!array || size < 2)
-return;
-    while (space < num / 3)
+    int num , space, index, j_index, temp;
+  if (!array || size < 2)
+        return;
+    // Calculate initial gap value
+    for (space = 1; space < num; space = (space * 3) + 1)
     {
-        space = space * 3 + 1;
     }
 
-    while (space >= 1)
+    // Start shell sort loop
+    while (space > 0)
     {
-        for (int index = space; index < num; ++index)
+        // Perform insertion sort with current gap value
+        for (index = space; index < num; index++)
         {
-            int temp = array[index];
-            int j_index = index;
-            while (j_index >= space && array[j_index - space] > temp)
+            temp = array[index];
+            for (j_index = index; j_index >= space && array[j_index - space] > temp; j_index -= space)
             {
                 array[j_index] = array[j_index - space];
-                j_index -= space;
             }
             array[j_index] = temp;
         }
-        print_array(array, size);
+
+        // Update gap value
         space = (space - 1) / 3;
+
+        // Print array after each iteration
+        print_array(array, size);
     }
 }
