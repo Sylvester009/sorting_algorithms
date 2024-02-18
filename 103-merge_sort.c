@@ -19,9 +19,9 @@ size_t middle, size_t End)
 	print_array(subarray + Beg, middle - Beg);
 
 	printf("[right]: ");
-	print_array(subarray + middle, back - middle);
+	print_array(subarray + middle, End - middle);
 
-	for (i = Beg, j = middle; i < middle && j < back; k++)
+	for (i = Beg, j = middle; i < middle && j < End; k++)
 		buffer[k] = (subarray[i] < subarray[j]) ? subarray[i++] : subarray[j++];
 	for (; i < middle; i++)
 		buffer[k++] = subarray[i];
@@ -47,10 +47,10 @@ void sortrecursive_merge(int *subarray, int *buffer, size_t Beg, size_t End)
 
 	if (back - Beg > 1)
 	{
-		mid = front + (back - front) / 2;
+		middle = front + (End - Beg) / 2;
 		sortrecursive_merge(subarray, buffer, Beg, middle);
 		sortrecursive_merge(subarray, buffer, middle, End);
-		subarraymerge(subarray, buffer, Beg, middle, End`);
+		subarraymerge(subarray, buffer, Beg, middle, End);
 	}
 }
 
@@ -69,7 +69,7 @@ void merge_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	buff = malloc(sizeof(int) * size);
+	buffer = malloc(sizeof(int) * size);
 	if (buffer == NULL)
 		return;
 
