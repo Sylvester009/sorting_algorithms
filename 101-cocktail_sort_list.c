@@ -72,3 +72,4 @@ do {
     if (backwardSwapped)
         temp = temp->next;
 } while (forwardSwapped || backwardSwapped);
+}
