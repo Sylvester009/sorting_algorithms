@@ -8,12 +8,15 @@
  */
 void shell_sort(int *array, size_t size)
 {
+int num = static_cast<int>(size);
+int temp = array[index];
+int j_index = index;
+int space = 1;
+    
     if (!array || size < 2)
         return;
 
-    int num = static_cast<int>(size);
 
-    int space = 1;
     while (space < num)
     {
         space = (space * 3) + 1;
@@ -23,9 +26,6 @@ void shell_sort(int *array, size_t size)
     {
         for (int index = space; index < num; index++)
         {
-            int temp = array[index];
-            int j_index = index;
-
             while (j_index >= space && array[j_index - space] > temp)
             {
                 array[j_index] = array[j_index - space];
