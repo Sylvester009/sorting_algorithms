@@ -15,12 +15,12 @@ void swap_ints(int *previous, int *current)
 }
 
 /**
- * shell_sort - Sort an array of integers in ascending
- *              order using the shell sort algorithm.
- * @array: An array of integers.
- * @size: The size of the array.
- *
- * Description: Uses the Knuth interval sequence.
+ * shell_sort - this will sort arrays of int type
+ * in an ascending order using a shell sort algorithm methode ,
+ * with space sizes determined by a decreasing of Knuth seqeuence
+ * @array: this is the array of integers to be sorted
+ * @size: the amount of elements in  an array
+ * Description: while i am  the Knuth interval sequence.
  */
 void shell_sort(int *array, size_t size)
 {
