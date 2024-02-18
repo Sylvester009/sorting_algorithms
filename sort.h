@@ -48,7 +48,7 @@ void quick_sort_hoare(int *array, size_t size);
 /* helpers */
 int partitionArray(int *array, int left, int right, size_t size);
 void quicksortArray(int *array, int left, int right, size_t size);
-void integerswapping(int *previous, int *previous);
+void integerswapping(int *previous, int *current);
 void swap_adjacent(listint_t **list, listint_t *tail, listint_t *head);
 void sortrecursive_merge(int *subarray, int *buffer, size_t Beg, size_t End);
 void subarraymerge(int *subarray, int *buffer, size_t Beg,
