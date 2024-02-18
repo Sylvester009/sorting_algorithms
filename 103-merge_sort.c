@@ -9,28 +9,28 @@
  * @mid: The middle index of the array.
  * @back: The back index of the array.
  */
-void subarraymerge(int *subarray, int *buffer, size_t Beg,
-size_t middle, size_t End)
+void merge_subarr(int *subarr, int *buff, size_t front, size_t mid,
+		size_t back)
 {
 	size_t i, j, k = 0;
 
 	printf("Merging...\n[left]: ");
-	print_array(subarray + Beg, middle - Beg);
+	print_array(subarr + front, mid - front);
 
 	printf("[right]: ");
-	print_array(subarray + mid, End - middle);
+	print_array(subarr + mid, back - mid);
 
-	for (i = Beg, j = middle; i < middle && j < End; k++)
-		buffer[k] = (subarray[i] < subarray[j]) ? subarray[i++] : subarray[j++];
-	for (; i < middle; i++)
-		buffer[k++] = subarray[i];
-	for (; j < End; j++)
-		buffer[k++] = subarray[j];
-	for (i = Beg, k = 0; i < End; i++)
-		subarray[i] = buffer[k++];
+	for (i = front, j = mid; i < mid && j < back; k++)
+		buff[k] = (subarr[i] < subarr[j]) ? subarr[i++] : subarr[j++];
+	for (; i < mid; i++)
+		buff[k++] = subarr[i];
+	for (; j < back; j++)
+		buff[k++] = subarr[j];
+	for (i = front, k = 0; i < back; i++)
+		subarr[i] = buff[k++];
 
 	printf("[Done]: ");
-	print_array(subarray + Beg, End - Beg);
+	print_array(subarr + front, back - front);
 }
 
 /**
@@ -40,22 +40,22 @@ size_t middle, size_t End)
  * @front: The front index of the subarray.
  * @back: The back index of the subarray.
  */
-void sortrecursive_merge(int *subarray, int *buffer, size_t Beg, size_t End)
+void merge_sort_recursive(int *subarr, int *buff, size_t front, size_t back)
 {
-	size_t middle;
+	size_t mid;
 
-	if (back - End > 1)
+	if (back - front > 1)
 	{
 		mid = front + (back - front) / 2;
-		sortrecursive_merge(subarray, buffer, Beg, middle);
-		sortrecursive_merge(subarray, buffer, middle, End);
-		subarraymerge(subarray, buffer, Beg, middle, End);
+		merge_sort_recursive(subarr, buff, front, mid);
+		merge_sort_recursive(subarr, buff, mid, back);
+		merge_subarr(subarr, buff, front, mid, back);
 	}
 }
 
 /**
  * merge_sort - Sort an array of integers in ascending
- * order using the merge sort algorithm.
+ *              order using the merge sort algorithm.
  * @array: An array of integers.
  * @size: The size of the array.
  *
@@ -63,16 +63,16 @@ void sortrecursive_merge(int *subarray, int *buffer, size_t Beg, size_t End)
  */
 void merge_sort(int *array, size_t size)
 {
-	int *buffer;
+	int *buff;
 
 	if (array == NULL || size < 2)
 		return;
 
-	buffer = malloc(sizeof(int) * size);
-	if (buffer == NULL)
+	buff = malloc(sizeof(int) * size);
+	if (buff == NULL)
 		return;
 
-	sortrecursive_merge(array, buffer, 0, size);
+	merge_sort_recursive(array, buff, 0, size);
 
-	free(buffer);
+	free(buff);
 }
