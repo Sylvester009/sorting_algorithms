@@ -7,30 +7,27 @@
  * @size: amount of elements in array
  */
 
-void shell_sort(int *array, size_t size)
-{
-
-int temp = array[index];
-int j_index = index;
+void shell_sort(int *array, size_t size) {
+    int temp;
+    int j_index = 0;
     int num = (int)size;
     int space = 1;
     int K_max = 1;
     
     if (!array || size < 2)
         return;
-    while (K_max < num)
-    {
+    
+    while (K_max < num) {
         space = K_max;
         K_max = (K_max * 3) + 1;
     }
 
-    while (space > 0)
-    {
-        for (int index = space; index < num; index++)
-        {
+    while (space > 0) {
+        for (int index = space; index < num; index++) {
+            temp = array[index];
 
-            while (j_index >= space && array[j_index - space] > temp)
-            {
+            j_index = index;
+            while (j_index >= space && array[j_index - space] > temp) {
                 array[j_index] = array[j_index - space];
                 j_index -= space;
             }
