@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * swap_ints - this is the Swap between two int in an array.
+ * integerswapping - this is the Swap between two int in an array.
  * @current: The first int to be swap.
  * @previous: The second int to be swap.
  */
