@@ -34,7 +34,7 @@ print_list(*list);
  */
 void cocktail_sort_list(listint_t **list)
 {
-bool forwardSwapped, backwardSwapped;
+bool swapped_f, backwardSwapped;
 int s_Range = 1000000, checks;
 listint_t *temp;
 
@@ -42,34 +42,46 @@ if (!list || !(*list) || !(*list)->next)
     return;
 
 temp = *list;
+bool continueSorting;
 do {
-    forwardSwapped = backwardSwapped = false;
-    for (checks = 0; temp->next && checks < s_Range; checks++)
-    {
-        if (temp->next->n < temp->n)
-        {
-            swapAdjacent(list, temp, temp->next);
-            forwardSwapped = true;
-        }
-        else
+    swapped_f = backwardSwapped = false;
+    int remainingChecks = s_Range;
+    continueSorting = false;
+
+    while (temp->next && remainingChecks > 0) {
+        if (temp->next->n < temp->n) {
+            dll_adj_swap(list, temp, temp->next);
+            swapped_f = true;
+            continueSorting = true;
+        } else {
             temp = temp->next;
-    }
-    if (!temp->next)  /* first loop, measuring list */
-        s_Range = checks;
-    if (forwardSwapped)
-        temp = temp->prev;
-    s_Range--;
-    for (checks = 0; temp->prev && checks < s_Range; checks++)
-    {
-        if (temp->n < temp->prev->n)
-        {
-            swapAdjacent(list, temp->prev, temp);
-            backwardSwapped = true;
         }
-        else
-            temp = temp->prev;
+        remainingChecks--;
     }
-    if (backwardSwapped)
+
+    if (!temp->next) { /* first loop, measuring list */
+        s_Range = checks;
+    }
+
+    if (swapped_f) {
+        temp = temp->prev;
+    }
+
+    remainingChecks = s_Range;
+
+    while (temp->prev && remainingChecks > 0) {
+        if (temp->n < temp->prev->n) {
+            dll_adj_swap(list, temp->prev, temp);
+            backwardSwapped = true;
+            continueSorting = true;
+        } else {
+            temp = temp->prev;
+        }
+        remainingChecks--;
+    }
+
+    if (backwardSwapped) {
         temp = temp->next;
-} while (forwardSwapped || backwardSwapped);
+    }
+} while (continueSorting);
 }
