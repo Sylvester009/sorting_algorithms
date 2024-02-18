@@ -1,5 +1,6 @@
 #include "sort.h"
-
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * merge_subarr - Sort a subarray of integers.
