@@ -42,46 +42,34 @@ if (!list || !(*list) || !(*list)->next)
     return;
 
 temp = *list;
-bool continueSorting;
 do {
     swapped_f = backwardSwapped = false;
-    int remainingChecks = s_Range;
-    continueSorting = false;
-
-    while (temp->next && remainingChecks > 0) {
-        if (temp->next->n < temp->n) {
+    for (checks = 0; temp->next && checks < s_Range; checks++)
+    {
+        if (temp->next->n < temp->n)
+        {
             dll_adj_swap(list, temp, temp->next);
             swapped_f = true;
-            continueSorting = true;
-        } else {
-            temp = temp->next;
         }
-        remainingChecks--;
+        else
+            temp = temp->next;
     }
-
-    if (!temp->next) { /* first loop, measuring list */
+    if (!temp->next)  /* first loop, measuring list */
         s_Range = checks;
-    }
-
-    if (swapped_f) {
+    if (swapped_f)
         temp = temp->prev;
-    }
-
-    remainingChecks = s_Range;
-
-    while (temp->prev && remainingChecks > 0) {
-        if (temp->n < temp->prev->n) {
+    s_Range--;
+    for (checks = 0; temp->prev && checks < s_Range; checks++)
+    {
+        if (temp->n < temp->prev->n)
+        {
             dll_adj_swap(list, temp->prev, temp);
             backwardSwapped = true;
-            continueSorting = true;
-        } else {
-            temp = temp->prev;
         }
-        remainingChecks--;
+        else
+            temp = temp->prev;
     }
-
-    if (backwardSwapped) {
+    if (backwardSwapped)
         temp = temp->next;
-    }
-} while (continueSorting);
+} while (swapped_f || backwardSwapped);
 }
