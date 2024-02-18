@@ -32,15 +32,16 @@ print_list(*list);
  * order using an cocktail shaker sort algorithm
  * @list: doubly linked list of integers to be sorted
  */
-void cocktail_sort_list(listint_t **list) {
+void cocktail_sort_list(listint_t **list)
+{
 bool fowardswapped, backwardSwapped;
 int s_Range = 1000000, checks;
 listint_t *temp;
-
 if (!list || !(*list) || !(*list)->next)
 return;
 temp = *list;
-while (1) {
+while (1)
+{
 fowardswapped = backwardSwapped = false;
 for (checks = 0; temp->next && checks < s_Range; checks++)
 {
@@ -53,24 +54,25 @@ else {
 temp = temp->next;
 }
 }
-if (!temp->next)  /* first loop, measuring list */
+if (!temp->next)
 s_Range = checks;
 if (fowardswapped)
 temp = temp->prev;
 s_Range--;
-
-for (checks = 0; temp->prev && checks < s_Range; checks++) {
-if (temp->n < temp->prev->n) {
+for (checks = 0; temp->prev && checks < s_Range; checks++)
+{
+if (temp->n < temp->prev->n)
+{
 swap_adjacent(list, temp->prev, temp);
 backwardSwapped = true;
 }
-else {
+else
+{
 temp = temp->prev;
 }
 }
 if (backwardSwapped)
 temp = temp->next;
-
 if (!fowardswapped && !backwardSwapped)
 break;
 }
