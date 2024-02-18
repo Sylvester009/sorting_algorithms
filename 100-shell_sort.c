@@ -5,7 +5,7 @@
  * @current: The first int to be swap.
  * @previous: The second int to be swap.
  */
-void swap_ints(int *previous, int *current)
+void integerswapping(int *previous, int *current)
 {
 	int tmp;
 
@@ -39,7 +39,7 @@ for (index = space; index < size; index++)
 j_index = index;
 while (j_index >= space && array[j_index - space] > array[j_index])
 {
-swap_ints(array + j_index, array + (j_index - space));
+integerswapping(array + j_index, array + (j_index - space));
 j_index -= space;
 }
 }
