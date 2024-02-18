@@ -49,7 +49,9 @@ return (index);
 void quicksortArray(int *array, int left, int right, size_t size)
 {
 	int point;
+
 	while (left < right)
+
 	{
 		point = partitionArray(array, left, right, size);
 		quicksortArray(array, left, point - 1, size);
