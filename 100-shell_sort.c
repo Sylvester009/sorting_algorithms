@@ -15,12 +15,8 @@ void shell_sort(int *array, size_t size) {
     for (space = 1; space < num; space = (space * 3) + 1)
     {
     }
-
-    // Start shell sort loop
     while (space > 0)
-    {
-        // Perform insertion sort with current gap value
-        for (index = space; index < num; index++)
+    {        for (index = space; index < num; index++)
         {
             temp = array[index];
             for (j_index = index; j_index >= space && array[j_index - space] > temp; j_index -= space)
@@ -29,11 +25,9 @@ void shell_sort(int *array, size_t size) {
             }
             array[j_index] = temp;
         }
-
-        // Update gap value
         space = (space - 1) / 3;
 
-        // Print array after each iteration
+        /* Print array after each iteration */
         print_array(array, size);
     }
 }
