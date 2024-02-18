@@ -42,12 +42,8 @@ if (!list || !(*list) || !(*list)->next)
     return;
 
 temp = *list;
-forwardSwapped = backwardSwapped = true;
-
-while (forwardSwapped || backwardSwapped) {
+do {
     forwardSwapped = backwardSwapped = false;
-    temp = *list;
-
     for (checks = 0; temp->next && checks < s_Range; checks++)
     {
         if (temp->next->n < temp->n)
@@ -58,16 +54,11 @@ while (forwardSwapped || backwardSwapped) {
         else
             temp = temp->next;
     }
-
-    s_Range = checks;
-
-    if (forwardSwapped) {
+    if (!temp->next)  /* first loop, measuring list */
+        s_Range = checks;
+    if (forwardSwapped)
         temp = temp->prev;
-        backwardSwapped = true;
-    }
-
     s_Range--;
-
     for (checks = 0; temp->prev && checks < s_Range; checks++)
     {
         if (temp->n < temp->prev->n)
@@ -78,7 +69,6 @@ while (forwardSwapped || backwardSwapped) {
         else
             temp = temp->prev;
     }
-
     if (backwardSwapped)
         temp = temp->next;
-}
+} while (forwardSwapped || backwardSwapped);
