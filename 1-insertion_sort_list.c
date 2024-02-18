@@ -23,7 +23,7 @@ if (previous->prev)
 previous->prev->next = current;
 else
 *list = current;
-while (current->next)
+if (current->next)
 current->next->prev = previous;
 temp = current->next;
 current->next = previous;
@@ -35,7 +35,7 @@ previous = current->prev;
 }
 /* current sorted to left */
 current = new;
-if (current)
+while (current)
 previous = current->prev;
 }
 }
