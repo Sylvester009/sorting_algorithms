@@ -13,29 +13,30 @@
 void subarraymerge(int *subarray, int *buffer, size_t Beg,
 size_t middle, size_t End)
 {
-    size_t i = Beg, j = middle, k = 0;
+size_t i = Beg, j = middle, k = 0;
+printf("Merging...\n[left]: ");
+print_array(subarray + Beg, middle - Beg);
+printf("[right]: ");
+print_array(subarray + middle, End - middle);
 
-    printf("Merging...\n[left]: ");
-    print_array(subarray + Beg, middle - Beg);
+while (i < middle && j < End)
+{
+buffer[k++] = (subarray[i] < subarray[j]) ? subarray[i++] : subarray[j++];
+}
+while (i < middle)
+{
+buffer[k++] = subarray[i++];
+}
+while (j < End)
+{
+buffer[k++] = subarray[j++];
+}
+for (i = Beg, k = 0; i < End; i++, k++) {
+subarray[i] = buffer[k];
+}
 
-    printf("[right]: ");
-    print_array(subarray + middle, End - middle);
-
-    while (i < middle && j < End) {
-        buffer[k++] = (subarray[i] < subarray[j]) ? subarray[i++] : subarray[j++];
-    }
-    while (i < middle) {
-        buffer[k++] = subarray[i++];
-    }
-    while (j < End) {
-        buffer[k++] = subarray[j++];
-    }
-    for (i = Beg, k = 0; i < End; i++, k++) {
-        subarray[i] = buffer[k];
-    }
-
-    printf("[Done]: ");
-    print_array(subarray + Beg, End - Beg);
+printf("[Done]: ");
+print_array(subarray + Beg, End - Beg);
 }
 
 /**
@@ -47,15 +48,15 @@ size_t middle, size_t End)
  */
 void sortrecursive_merge(int *subarray, int *buffer, size_t Beg, size_t End)
 {
-	size_t middle;
+size_t middle;
 
-	if (End - Beg > 1)
-	{
-		middle = Beg + (End - Beg) / 2;
-		sortrecursive_merge(subarray, buffer, Beg, middle);
-		sortrecursive_merge(subarray, buffer, middle, End);
-		subarraymerge(subarray, buffer, Beg, middle, End);
-	}
+if (End - Beg > 1)
+{
+middle = Beg + (End - Beg) / 2;
+sortrecursive_merge(subarray, buffer, Beg, middle);
+sortrecursive_merge(subarray, buffer, middle, End);
+subarraymerge(subarray, buffer, Beg, middle, End);
+}
 }
 
 /**
@@ -68,16 +69,16 @@ void sortrecursive_merge(int *subarray, int *buffer, size_t Beg, size_t End)
  */
 void merge_sort(int *array, size_t size)
 {
-	int *buffer;
+int *buffer;
 
-	while (array == NULL || size < 2)
-		return;
+while (array == NULL || size < 2)
+return;
 
-	buffer = malloc(sizeof(int) * size);
-	while (buffer == NULL)
-		return;
+buffer = malloc(sizeof(int) * size);
+while (buffer == NULL)
+return;
 
-	sortrecursive_merge(array, buffer, 0, size);
+sortrecursive_merge(array, buffer, 0, size);
 
-	free(buffer);
+free(buffer);
 }
