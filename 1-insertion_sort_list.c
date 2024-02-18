@@ -13,34 +13,31 @@ void insertion_sort_list(listint_t **list)
     if (!list || !(*list) || !((*list)->next))
         return;
 
-    current = (*list);
-    new = (*list)->next;
-
-    while (new)
+    previous = (*list);
+    current = (*list)->next;
+    while (current)
     {
-        previous = current;
-        current = new;
-        new = new->next;
-
+        new = current->next;
         while (previous && current->n < previous->n)
         {
             if (previous->prev)
                 previous->prev->next = current;
             else
                 *list = current;
-
             if (current->next)
                 current->next->prev = previous;
-
             temp = current->next;
             current->next = previous;
             current->prev = previous->prev;
             previous->next = temp;
             previous->prev = current;
-
             print_list(*list);
-
+            /* compare next pair, flowing to house left */
             previous = current->prev;
         }
+        /* current sorted to left, new cycle starts @ right leading edge */
+        current = new;
+        if (current)
+            previous = current->prev;
     }
 }
