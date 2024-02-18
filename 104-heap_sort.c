@@ -25,7 +25,7 @@ void ConvertToHeap(int *array, size_t size, size_t start, size_t end)
 	{
 		integerswapping(array + end, array + large);
 		print_array(array, size);
-		max_heapify(array, size, start, large);
+		ConvertToHeap(array, size, start, large);
 	}
 }
 
@@ -46,12 +46,12 @@ void heapsorter(int *array, size_t size)
 		return;
 
 	for (i = (size / 2) - 1; i >= 0; i--)
-		max_heapify(array, size, size, i);
+		ConvertToHeap(array, size, size, i);
 
 	for (i = size - 1; i > 0; i--)
 	{
 		integerswapping(array, array + i);
 		print_array(array, size);
-		max_heapify(array, size, i, 0);
+		ConvertToHeap(array, size, i, 0);
 	}
 }
