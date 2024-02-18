@@ -6,31 +6,29 @@
  * @array: array of integers to be sorted
  * @size: amount of elements in array
  */
-void shell_sort(int *array, size_t size)
-{
-    int index, j_index, space, num, temp;
+void shell_sort(int *array, size_t size) {
+    int index, j_index, space, num, K_max, temp;
 
     if (!array || size < 2)
         return;
 
     num = (int)size;
-    int K_max = 1;
-    while (K_max < num / 3)
-    {
-        K_max = K_max * 3 + 1;
+    for (space = 1; space < num; space = (space * 3) + 1) {
+        K_max = space;
     }
 
-    for (space = K_max; space > 0; space /= 3)
-    {
-        for (index = space; index < num; index++)
-        {
+    for (space = K_max; space > 0; space = (space - 1) / 3) {
+        for (index = space; index < num; index++) {
             temp = array[index];
-            for (j_index = index; j_index >= space && array[j_index - space] > temp; j_index -= space)
-            {
+            for (j_index = index; j_index >= space && array[j_index - space] > temp; j_index -= space) {
                 array[j_index] = array[j_index - space];
             }
             array[j_index] = temp;
         }
-        print_array(array, size);
+        // Print array after each iteration
+        for (int i = 0; i < size; i++) {
+            std::cout << array[i] << " ";
+        }
+        std::cout << std::endl;
     }
 }
