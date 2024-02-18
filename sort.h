@@ -51,13 +51,11 @@ void quicksortArray(int *array, int left, int right, size_t size);
 void swap_ints(int *previous, int *current);
 
 void swap_adjacent(listint_t **list, listint_t *tail, listint_t *head);
-void merge_subarr(int *subarr, int *buff, size_t front, size_t mid,
-size_t back);
-void merge_sort_recursive(int *subarr, int *buff, size_t front, size_t back);
 
-/*void sortrecursive_merge(int *subarray, int *buffer, size_t Beg, size_t End);
+
+void sortrecursive_merge(int *subarray, int *buffer, size_t Beg, size_t End);
 void subarraymerge(int *subarray, int *buffer, size_t Beg, size_t middle, size_t End);
-
+/*
 void PrintArray(int *array, int iBeg, int iEnd);
 void CopyArray(int *array, int iBeg, int iEnd, int *work_copy);
 void TopDownMerge(int *array, int iBeg, int iMid, int iEnd, int *work_copy);
