@@ -31,10 +31,10 @@ while (j < End)
 {
 buffer[k++] = subarray[j++];
 }
-for (i = Beg, k = 0; i < End; i++, k++) {
+for (i = Beg, k = 0; i < End; i++, k++)
+{
 subarray[i] = buffer[k];
 }
-
 printf("[Done]: ");
 print_array(subarray + Beg, End - Beg);
 }
