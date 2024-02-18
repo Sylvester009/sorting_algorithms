@@ -14,7 +14,7 @@ return;
 
 previous = (*list);
 current = (*list)->next;
-if (current)
+while (current)
 {
 new = current->next;
 while (previous && current->n < previous->n)
