@@ -7,11 +7,9 @@
  * @array: it is the array of int type to be sorted
  * @size: the amount of elements in an array
  */
-void counting_sort(int* array, size_t size)
+void counting_sort(int *array, size_t size)
 {
-int index, sum, max;
-int* arg_c;
-int* output;
+int index, sum, max , *arg_c , *output;
 if (!array || size < 2)
 return;
 max = array[0];
@@ -34,11 +32,9 @@ arg_c[index] = sum;
 index++;
 }
 print_array(arg_c, max + 1);
-
 output = malloc(sizeof(int) * size);
 if (!output)
 return;
-
 index = 0;
 while (index < (int)size)
 {
