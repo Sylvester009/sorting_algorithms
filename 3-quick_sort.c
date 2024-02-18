@@ -39,22 +39,21 @@ return (index);
 }
 
 /**
- * quicksort - recursively sorts array of integers by separating into two
+ * quicksortArray - recursively sorts array of integers by separating into two
  * partitions, using Lomuto quick sort
  * @array: array of integers to be sorted
  * @left: index in array that begins partition
  * @right: index in array that ends partition
  * @size: amount of elements in array
  */
-void quicksort(int *array, int low, int high, size_t size)
+void quicksortArray(int *array, int left, int right, size_t size)
 {
-	int p;
-
-	if (low < high)
+	int point;
+	while (left < right)
 	{
-		p = partition(array, low, high, size);
-		quicksort(array, low, p - 1, size);
-		quicksort(array, p + 1, high, size);
+		point = partitionArray(array, left, right, size);
+		quicksortArray(array, left, point - 1, size);
+		quicksortArray(array, point + 1, right, size);
 	}
 }
 
@@ -66,8 +65,7 @@ void quicksort(int *array, int low, int high, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
-	if (!array || size < 2)
+	while (!array || size < 2)
 		return;
-
-	quicksort(array, 0, (int)size - 1, size);
+	quicksortArray(array, 0, (int)size - 1, size);
 }
