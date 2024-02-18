@@ -23,7 +23,7 @@ if (!arg_c)
 return;
 for (index = 0; index < (int)size; index++)
 arg_c[array[index]]++;
-index = 0 , sum = 0;
+index = 0, sum = 0;
 while (index < max + 1)
 {
 sum = arg_c[index] + sum;
