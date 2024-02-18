@@ -14,7 +14,7 @@ return;
 
 previous = (*list);
 current = (*list)->next;
-while (current)
+if (current)
 {
 new = current->next;
 while (previous && current->n < previous->n)
@@ -23,7 +23,7 @@ if (previous->prev)
 previous->prev->next = current;
 else
 *list = current;
-while (current->next)
+if (current->next)
 current->next->prev = previous;
 temp = current->next;
 current->next = previous;
