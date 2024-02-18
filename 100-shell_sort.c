@@ -6,14 +6,12 @@
  * @array: array of integers to be sorted
  * @size: amount of elements in array
  */
-void shell_sort(int *array, size_t size)
-{
-  
 
-    int num , space, index, j_index, temp;
-  if (!array || size < 2)
+void shell_sort(int *array, size_t size) {
+    int num = size, space, index, j_index, temp;
+    if (!array || size < 2)
         return;
-    // Calculate initial gap value
+    /* Calculate initial gap value */
     for (space = 1; space < num; space = (space * 3) + 1)
     {
     }
