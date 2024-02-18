@@ -53,10 +53,16 @@ void swap_adjacent(listint_t **list, listint_t *tail, listint_t *head);
 void sortrecursive_merge(int *subarray, int *buffer, size_t Beg, size_t End);
 void subarraymerge(int *subarray, int *buffer, size_t Beg,
 size_t middle, size_t End);
-void ConvertToHeap(int *array, size_t size, size_t start, size_t end);
+
+
+void swap_ints(int *a, int *b);
+void max_heapify(int *array, size_t size, size_t base, size_t root);
+void heap_sort(int *array, size_t size);
+
+/*void ConvertToHeap(int *array, size_t size, size_t start, size_t end);
 void heapsorter(int *array, size_t size);
 
-/* heap_sort() helpers 
+ heap_sort() helpers 
 int iParent(int i);
 int iLeftChild(int i);
 void ConvertToHeap(int *array, size_t size);
