@@ -2,20 +2,6 @@
 
 
 /**
- * swap_ints - this is the Swap between two int in an array.
- * @current: The first int to be swap.
- * @previous: The second int to be swap.
- */
-void integerswapping(int *previous, int *current)
-{
-	int tmp;
-
-	tmp = *previous;
-	*previous = *current;
-	*current = tmp;
-}
-
-/**
  * max_heapify - Turn a binary tree into a complete binary heap.
  * @array: An array of integers representing a binary tree.
  * @size: The size of the array/tree.
