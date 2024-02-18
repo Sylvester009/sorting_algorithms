@@ -37,7 +37,7 @@ for (; space >= 1; space /= 3)
 for (index = space; index < size; index++)
 {
 j_index = index;
-if (j_index >= space && array[j_index - space] > array[j_index])
+while (j_index >= space && array[j_index - space] > array[j_index])
 {
 swap_ints(array + j_index, array + (j_index - space));
 j_index -= space;
