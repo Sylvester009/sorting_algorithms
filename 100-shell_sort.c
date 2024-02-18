@@ -7,27 +7,39 @@
  * @size: amount of elements in array
  */
 
-void shell_sort(int *array, size_t size) {
-    int num = size, space, index, j_index, temp;
+void shell_sort(int *array, size_t size)
+{
+
+int temp = array[index];
+int j_index = index;
+    int num = (int)size;
+    int space = 1;
+    int K_max = 1;
+    
     if (!array || size < 2)
         return;
-    /* Calculate initial gap value */
-    for (space = 1; space < num; space = (space * 3) + 1)
+    while (K_max < num)
     {
+        space = K_max;
+        K_max = (K_max * 3) + 1;
     }
+
     while (space > 0)
-    {        for (index = space; index < num; index++)
+    {
+        for (int index = space; index < num; index++)
         {
-            temp = array[index];
-            for (j_index = index; j_index >= space && array[j_index - space] > temp; j_index -= space)
+
+            while (j_index >= space && array[j_index - space] > temp)
             {
                 array[j_index] = array[j_index - space];
+                j_index -= space;
             }
+
             array[j_index] = temp;
         }
-        space = (space - 1) / 3;
 
-        /* Print array after each iteration */
         print_array(array, size);
+
+        space = (space - 1) / 3;
     }
 }
