@@ -14,8 +14,8 @@ void swap_adjacent(listint_t **list, listint_t *tail, listint_t *head)
 		tail->prev->next = head;
 	else
 		*list = head;
-	while (head->next)
-		head->next->prev = tail;
+	if (head->next)
+	head->next->prev = tail;
 	head->prev = tail->prev;
 	tail->prev = head;
 	swap = head;
