@@ -8,26 +8,26 @@
  */
 void selection_sort(int *array, size_t size)
 {
-int index_i = 0, index_j, min_index_j, temp, array_size = (int)size;
+int index_i, index_j, min_index_j, temp, array_size = (int)size;
 
 if (!array || size < 2)
     return;
 
-/* At every position in the n-member array */
-while (index_i < array_size - 1)
+/* at every position in the n-member array */
+for (index_i = 0; index_i < array_size - 1; index_i++)
 {
-    /* Scan from that position to the end */
+    /* scan from that position to the end */
     min_index_j = index_i;
-    index_j = index_i + 1;
-    while (index_j < array_size)
+    for (index_j = index_i + 1; index_j < array_size; index_j++)
     {
-        /* Determine the minimum value in that range */
+        /* determine the minimum value in that range */
         if (array[index_j] < array[min_index_j])
         {
             min_index_j = index_j;
         }
-        index_j++;
     }
+    /* and if it is lower than the value at the start of the range, */
+    /* swap them */
     if (min_index_j != index_i)
     {
         temp = array[index_i];
@@ -35,5 +35,4 @@ while (index_i < array_size - 1)
         array[min_index_j] = temp;
         print_array(array, size);
     }
-    index_i++;
 }
