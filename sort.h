@@ -39,7 +39,7 @@ void quick_sort(int *array, size_t size);
 /* helpers */
 int partitionArray(int *array, int left, int right, size_t size);
 void quicksortArray(int *array, int left, int right, size_t size);
-void swap_ints(int *previous, int *current)
+void swap_ints(int *previous, int *current);
 
 
 
