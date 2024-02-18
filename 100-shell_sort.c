@@ -8,35 +8,30 @@
  */
 void shell_sort(int *array, size_t size)
 {
-if (!array || size < 2)
-return;
+	if (!array || size < 2)
+		return;
 
-int num = (int)size;
-int space, index, j_index, temp;
-int K_max = 1;
+	int num = (int)size;
+	int space, index, j_index, temp;
 
-/* Calculate the largest Knuth sequence value less than num as space *?
-while (K_max < num / 3)
-{
-K_max = K_max * 3 + 1;
-}
+	// Generate the sequence of Knuth gaps
+	for (space = 1; space < num / 3; space = space * 3 + 1);
 
-/* Start with the largest space and work down to space 1 */
-for (space = K_max; space > 0; space = (space - 1) / 3)
-{
-/* Perform insertion sort for the current space size */
-for (index = space; index < num; index++)
-{
-temp = array[index];
-for (j_index = index; j_index >= space && array[j_index - space] >
-temp; j_index -= space)
-{
-array[j_index] = array[j_index - space];
-}
-array[j_index] = temp;
-}
+	// Start with the largest gap and reduce it until space = 1
+	for (; space > 0; space /= 3)
+	{
+		// Perform insertion sort with the current gap
+		for (index = space; index < num; index++)
+		{
+			temp = array[index];
+			for (j_index = index; j_index >= space && array[j_index - space] > temp; j_index -= space)
+			{
+				array[j_index] = array[j_index - space];
+			}
+			array[j_index] = temp;
+		}
 
-/* Print the array after each pass (optional) */
-print_array(array, size);
-}
+		// Optional: Print the array after each pass
+		print_array(array, size);
+	}
 }
