@@ -32,44 +32,49 @@ print_list(*list);
  * order using an cocktail shaker sort algorithm
  * @list: doubly linked list of integers to be sorted
  */
-void cocktail_sort_list(listint_t **list)
-{
-bool swapped_f, backwardSwapped;
-int s_Range = 1000000, checks;
-listint_t *temp;
+void cocktail_sort_list(listint_t **list) {
+    bool swapped_f, backwardSwapped;
+    int s_Range = 1000000, checks;
+    listint_t *temp;
 
-if (!list || !(*list) || !(*list)->next)
-    return;
+    if (!list || !(*list) || !(*list)->next)
+        return;
 
-temp = *list;
-do {
-    swapped_f = backwardSwapped = false;
-    for (checks = 0; temp->next && checks < s_Range; checks++)
-    {
-        if (temp->next->n < temp->n)
-        {
-            dll_adj_swap(list, temp, temp->next);
-            swapped_f = true;
+    temp = *list;
+
+    while (1) {
+        swapped_f = backwardSwapped = false;
+
+        for (checks = 0; temp->next && checks < s_Range; checks++) {
+            if (temp->next->n < temp->n) {
+                swap_adjacent(list, temp, temp->next);
+                swapped_f = true;
+            } else {
+                temp = temp->next;
+            }
         }
-        else
-            temp = temp->next;
-    }
-    if (!temp->next)  /* first loop, measuring list */
-        s_Range = checks;
-    if (swapped_f)
-        temp = temp->prev;
-    s_Range--;
-    for (checks = 0; temp->prev && checks < s_Range; checks++)
-    {
-        if (temp->n < temp->prev->n)
-        {
-            dll_adj_swap(list, temp->prev, temp);
-            backwardSwapped = true;
-        }
-        else
+
+        if (!temp->next)  /* first loop, measuring list */
+            s_Range = checks;
+
+        if (swapped_f)
             temp = temp->prev;
+
+        s_Range--;
+
+        for (checks = 0; temp->prev && checks < s_Range; checks++) {
+            if (temp->n < temp->prev->n) {
+                swap_adjacent(list, temp->prev, temp);
+                backwardSwapped = true;
+            } else {
+                temp = temp->prev;
+            }
+        }
+
+        if (backwardSwapped)
+            temp = temp->next;
+
+        if (!swapped_f && !backwardSwapped)
+            break;
     }
-    if (backwardSwapped)
-        temp = temp->next;
-} while (swapped_f || backwardSwapped);
 }
