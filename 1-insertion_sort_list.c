@@ -35,7 +35,7 @@ previous = current->prev;
 }
 /* current sorted to left */
 current = new;
-while (current)
+if (current)
 previous = current->prev;
 }
 }
