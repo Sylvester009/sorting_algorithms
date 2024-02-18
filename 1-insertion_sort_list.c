@@ -14,13 +14,13 @@ void insertion_sort_list(listint_t **list)
         return;
 
     current = (*list);
-    next_node = (*list)->next;
+    new = (*list)->next;
 
-    while (next_node)
+    while (new)
     {
         previous = current;
-        current = next_node;
-        next_node = next_node->next;
+        current = new;
+        new = new->next;
 
         while (previous && current->n < previous->n)
         {
