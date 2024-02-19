@@ -28,7 +28,7 @@ int _strcmp(const char *str1, const char *str2)
  *
  * Return: The numerical value of the card.
  */
-char gettervalues(deck_node_t *point)
+char gettervalues(deck_node_t *card)
 {
 	if (_strcmp(card->card->value, "Ace") == 0)
 		return (0);
@@ -68,7 +68,7 @@ void insertion_by_sorting(deck_node_t **deck)
 {
 	deck_node_t *iteration, *insert, *tmp;
 
-	for (iteration = (*deck)->next; iteration != NULL; iter = tmp)
+	for (iteration = (*deck)->next; iteration != NULL; iteration = tmp)
 	{
 		tmp = iteration->next;
 		insert = iteration->prev;
