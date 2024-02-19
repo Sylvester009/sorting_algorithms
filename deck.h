@@ -43,5 +43,5 @@ int _strcmp(const char *str1, const char *str2);
 char gettervalues(deck_node_t *card);
 void insertion_by_sorting(deck_node_t **deck);
 void sorting_value(deck_node_t **deck);
-
+int getCardValue(deck_node_t *card);
 #endif /* DECK_H */
