@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * hoare_partition - this is a subset of an array of int type
+ * p_hoare - this is a subset of an array of int type
  * that will  hoare  the partition scheme.
  * @array: This is the array of int type .
  * @size: This is the size of the array.
