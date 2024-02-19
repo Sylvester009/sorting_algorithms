@@ -15,7 +15,7 @@ right = 2 * start + 2;
 large = start;
 while (left < end && array[left] > array[large])
 large = left;
-if (right < end && array[right] > array[large])
+while (right < end && array[right] > array[large])
 large = right;
 if (large != start)
 {
