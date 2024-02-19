@@ -4,10 +4,10 @@
 
 
 /**
- * enum bool_e - manual definition of booleans, in case C99 stdbool.h not
- * available
- * @false: logical 0
- * @true: logical 1
+ * enum bool_e - this is the manual definition of booleans
+ * in case C99 stdbool.h not available
+ * @false: the logical is 0
+ * @true: the logical is 1
  */
 typedef enum bool_e
 {
