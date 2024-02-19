@@ -1,5 +1,5 @@
 #include "sort.h"
-
+#include <stack>
 
 /**
  * ConvertToHeap - Turn a binary tree into a complete binary heap.
@@ -8,26 +8,32 @@
  * @end: The index of the base row of the tree.
  * @start: The root node of the binary tree.
  */
+
 void ConvertToHeap(int *array, size_t size, size_t end, size_t start)
 {
-    while (true)
+    std::stack<size_t> stack;
+    stack.push(start);
+
+    while (!stack.empty())
     {
-        size_t left = 2 * start + 1;
-        size_t right = 2 * start + 2;
-        size_t large = start;
+        size_t current = stack.top();
+        stack.pop();
 
-        if (left < end && array[left] > array[large])
-            large = left;
-        if (right < end && array[right] > array[large])
-            large = right;
+        size_t left = 2 * current + 1;
+        size_t right = 2 * current + 2;
+        size_t largest = current;
 
-        if (large == start)
-            break;
+        if (left < end && array[left] > array[largest])
+            largest = left;
+        if (right < end && array[right] > array[largest])
+            largest = right;
 
-        std::swap(array[start], array[large]);
-        print_array(array, size);
-
-        start = large;
+        if (largest != current)
+        {
+            std::swap(array[current], array[largest]);
+            print_array(array, size);
+            stack.push(largest);
+        }
     }
 }
 
