@@ -30,25 +30,35 @@ int getmaximum_s(int *array, int size)
  * @buffer: this is a buffer that store the sorted array.
  */
 
-void counting_radix(int *array, size_t size, int digit, int *buffer)
+void counting_radix(int *array, size_t size, int digit, int *buffer) {
+int arg_c[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+size_t index = 0;
+
+while (index < size)
 {
-	int arg_c[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	size_t index;
+arg_c[(array[index] / digit) % 10] += 1;
+index++;
+}
 
-	for (index = 0; index < size; index++)
-		arg_c[(array[index] / digit) % 10] += 1;
-
-	for (index = 0; index < 10; index++)
-		arg_c[index] += arg_c[index - 1];
-
-	for (index = size - 1; (int)index >= 0; index--)
-	{
-		buffer[arg_c[(array[index] / digit) % 10] - 1] = array[index];
-		arg_c[(array[index] / digit) % 10] -= 1;
-	}
-
-	for (index = 0; index < size; index++)
-		array[index] = buffer[index];
+index = 0;
+while (index < 10)
+{
+arg_c[index] += arg_c[index - 1];
+index++;
+}
+index = size - 1;
+while ((int)index >= 0)
+{
+buffer[arg_c[(array[index] / digit) % 10] - 1] = array[index];
+arg_c[(array[index] / digit) % 10] -= 1;
+index--;
+}
+index = 0;
+while (index < size)
+{
+array[index] = buffer[index];
+index++;
+}
 }
 
 /**
