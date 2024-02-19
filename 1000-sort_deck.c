@@ -1,5 +1,6 @@
 #include "deck.h"
 #include <stddef.h>
+
 /**
  * _strcmp - This Compares two strings.
  * @str1: This the  first string to be compared.
@@ -104,7 +105,7 @@ void sorting_value(deck_node_t **head)
 		insert = iteration->prev;
 		while (insert != NULL &&
 		       insert->card->kind == iteration->card->kind &&
-		       get_value(insert) > get_value(iteration))
+		       gettervalues(insert) > gettervalues(iteration))
 		{
 			insert->next = iteration->next;
 			if (iteration->next != NULL)
@@ -131,6 +132,6 @@ void sort_deck(deck_node_t **head)
 	if (deck == NULL || *deck == NULL || (*deck)->next == NULL)
 		return;
 
-	insertion_sort_deck_kind(deck);
-	insertion_sort_deck_value(deck);
+	insertion_by_sorting(deck);
+	sorting_value(deck);
 }
