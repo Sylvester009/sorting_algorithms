@@ -1,131 +1,132 @@
 #include "deck.h"
 #include <stddef.h>
 /**
- * _strcmp - Compares two strings.
- * @s1: The first string to be compared.
- * @s2: The second string to be compared.
+ * _strcmp - This Compares two strings.
+ * @str1: This the  first string to be compared.
+ * @str2: This the second string to be compared.
  *
- * Return: Positive byte difference if s1 > s2
- *         0 if s1 == s2
- *         Negative byte difference if s1 < s2
+ * Return: return Positive byte difference if str1 > str2
+ *         0 if str1 == str2
  */
-int _strcmp(const char *s1, const char *s2)
+int _strcmp(const char *str1, const char *str2)
 {
-	while (*s1 && *s2 && *s1 == *s2)
+	while (*str1 && *str2 && *str1 == *str2)
 	{
-		s1++;
-		s2++;
+		str1++;
+		str2++;
 	}
 
-	if (*s1 != *s2)
-		return (*s1 - *s2);
+	if (*str1 != *str2)
+		return (*str1 - *str2);
 	return (0);
 }
 
 /**
- * get_value - Get the numerical value of a card.
- * @card: A pointer to a deck_node_t card.
+ * gettervalues - Get the numerical value of a card.
+ * @point: A pointer to a deck_node_t card.
  *
  * Return: The numerical value of the card.
  */
-char get_value(deck_node_t *card)
+char gettervalues(deck_node_t *point)
 {
-	if (_strcmp(card->card->value, "Ace") == 0)
+	if (_strcmp(point->point->value, "Ace") == 0)
 		return (0);
-	if (_strcmp(card->card->value, "1") == 0)
+	if (_strcmp(point->point->value, "1") == 0)
 		return (1);
-	if (_strcmp(card->card->value, "2") == 0)
+	if (_strcmp(point->point->value, "2") == 0)
 		return (2);
-	if (_strcmp(card->card->value, "3") == 0)
+	if (_strcmp(point->point->value, "3") == 0)
 		return (3);
-	if (_strcmp(card->card->value, "4") == 0)
+	if (_strcmp(point->point->value, "4") == 0)
 		return (4);
-	if (_strcmp(card->card->value, "5") == 0)
+	if (_strcmp(point->point->value, "5") == 0)
 		return (5);
-	if (_strcmp(card->card->value, "6") == 0)
+	if (_strcmp(point->point->value, "6") == 0)
 		return (6);
-	if (_strcmp(card->card->value, "7") == 0)
+	if (_strcmp(point->point->value, "7") == 0)
 		return (7);
-	if (_strcmp(card->card->value, "8") == 0)
+	if (_strcmp(point->point->value, "8") == 0)
 		return (8);
-	if (_strcmp(card->card->value, "9") == 0)
+	if (_strcmp(point->point->value, "9") == 0)
 		return (9);
-	if (_strcmp(card->card->value, "10") == 0)
+	if (_strcmp(point->point->value, "10") == 0)
 		return (10);
-	if (_strcmp(card->card->value, "Jack") == 0)
+	if (_strcmp(point->point->value, "Jack") == 0)
 		return (11);
-	if (_strcmp(card->card->value, "Queen") == 0)
+	if (_strcmp(point->point->value, "Queen") == 0)
 		return (12);
 	return (13);
 }
 
 /**
- * insertion_sort_deck_kind - Sort a deck of cards from spades to diamonds.
- * @deck: A pointer to the head of a deck_node_t doubly-linked list.
+ * insertion_by_sorting - it Sorts by  spading to diamonds.
+ * @head: this is a pointer thst points to  the head of
+ * a deck_node_t doubly-linked list.
  */
-void insertion_sort_deck_kind(deck_node_t **deck)
+void insertion_by_sorting(deck_node_t **head)
 {
-	deck_node_t *iter, *insert, *tmp;
+	deck_node_t *iteration, *insert, *tmp;
 
-	for (iter = (*deck)->next; iter != NULL; iter = tmp)
+	for (iteration = (*deck)->next; iteration != NULL; iter = tmp)
 	{
-		tmp = iter->next;
-		insert = iter->prev;
-		while (insert != NULL && insert->card->kind > iter->card->kind)
+		tmp = iteration->next;
+		insert = iteration->prev;
+		while (insert != NULL && insert->card->kind > iteration->card->kind)
 		{
-			insert->next = iter->next;
-			if (iter->next != NULL)
-				iter->next->prev = insert;
-			iter->prev = insert->prev;
-			iter->next = insert;
+			insert->next = iteration->next;
+			if (iteration->next != NULL)
+				iteration->next->prev = insert;
+			iteration->prev = insert->prev;
+			iteration->next = insert;
 			if (insert->prev != NULL)
-				insert->prev->next = iter;
+				insert->prev->next = iteration;
 			else
-				*deck = iter;
-			insert->prev = iter;
-			insert = iter->prev;
+				*head = iteration;
+			insert->prev = iteration;
+			insert = iteration->prev;
 		}
 	}
 }
 
 /**
- * insertion_sort_deck_value - Sort a deck of cards sorted from
- *                             spades to diamonds from ace to king.
- * @deck: A pointer to the head of a deck_node_t doubly-linked list.
+ * sorting_value - it is Sorts  sorted from
+ * spades to diamonds.
+ * @head: this is a  pointer that points to the
+ * head of a deck_node_t doubly-linked list.
  */
-void insertion_sort_deck_value(deck_node_t **deck)
+void sorting_value(deck_node_t **head)
 {
-	deck_node_t *iter, *insert, *tmp;
+	deck_node_t *iteration, *insert, *tmp;
 
-	for (iter = (*deck)->next; iter != NULL; iter = tmp)
+	for (iteration = (*head)->next; iteration != NULL; iteration = tmp)
 	{
-		tmp = iter->next;
-		insert = iter->prev;
+		tmp = iteration->next;
+		insert = iteration->prev;
 		while (insert != NULL &&
-		       insert->card->kind == iter->card->kind &&
-		       get_value(insert) > get_value(iter))
+		       insert->card->kind == iteration->card->kind &&
+		       get_value(insert) > get_value(iteration))
 		{
-			insert->next = iter->next;
-			if (iter->next != NULL)
-				iter->next->prev = insert;
-			iter->prev = insert->prev;
-			iter->next = insert;
+			insert->next = iteration->next;
+			if (iteration->next != NULL)
+				iteration->next->prev = insert;
+			iteration->prev = insert->prev;
+			iteration->next = insert;
 			if (insert->prev != NULL)
-				insert->prev->next = iter;
+				insert->prev->next = iteration;
 			else
-				*deck = iter;
-			insert->prev = iter;
-			insert = iter->prev;
+				*head = iteration;
+			insert->prev = iteration;
+			insert = iteration->prev;
 		}
 	}
 }
 
 /**
- * sort_deck - Sort a deck of cards from ace to king and
- *             from spades to diamonds.
- * @deck: A pointer to the head of a deck_node_t doubly-linked list.
+ * sort_deck - its Sorts from spades to diamonds.
+ * @head: this is a  pointer that points to the
+ * head of a deck_node_t doubly-linked list.
  */
-void sort_deck(deck_node_t **deck)
+void sort_deck(deck_node_t **head)
 {
 	if (deck == NULL || *deck == NULL || (*deck)->next == NULL)
 		return;
