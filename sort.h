@@ -55,7 +55,7 @@ void subarraymerge(int *subarray, int *buffer, size_t Beg,
 size_t middle, size_t End);
 
 
-void ints_swapping(int *previous, int *current)
+void ints_swapping(int *previous, int *current);
 void ConvertToHeap(int *array, size_t size, size_t end, size_t start);
 void heapsorter(int *array, size_t size);
 
