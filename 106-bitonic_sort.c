@@ -38,7 +38,7 @@ void merge_bitonic(bool boolean, int *subarray, size_t size, size_t first_size)
 {
 int *st, *nd;
 
-while (size > 1)
+if (size > 1)
 {
 st = subarray;
 nd = subarray + (size / 2);
