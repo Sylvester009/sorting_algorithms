@@ -14,7 +14,7 @@ void ConvertToHeap(int *array, size_t size, size_t end, size_t start)
 	right = 2 * start + 2;
 	large = start;
 
-	while (left < end && array[left] > array[large])
+	if (left < end && array[left] > array[large])
 		large = left;
 	if (right < end && array[right] > array[large])
 		large = right;
@@ -38,20 +38,22 @@ void ConvertToHeap(int *array, size_t size, size_t end, size_t start)
  */
 void heap_sort(int *array, size_t size)
 {
-	int i;
+    int i;
 
-	if (array == NULL || size < 2)
-		return;
+    if (array == NULL || size < 2)
+        return;
 
-	for (i = (size / 2) - 1; i >= 0; i--)
-		ConvertToHeap(array, size, size, i);
+    for (i = (size / 2) - 1; i >= 0; i--)
+        ConvertToHeap(array, size, size, i);
 
-	for (i = size - 1; i > 0; i--)
-	{
-		ints_swapping(array, array + i);
-		print_array(array, size);
-		ConvertToHeap(array, size, i, 0);
-	}
+    i = size - 1;
+    while (i > 0)
+    {
+        ints_swapping(array, array + i);
+        print_array(array, size);
+        ConvertToHeap(array, size, i, 0);
+        i--;
+    }
 }
 /**
  * ints_swapping - this is the Swap between two int in an array.
