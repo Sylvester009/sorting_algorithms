@@ -88,7 +88,7 @@ void integer_swapping(int *previous, int *current)
  */
 void quick_sort_hoare(int *array, size_t size)
 {
-	if (array == NULL || size < 2)
+	while (array == NULL || size < 2)
 		return;
 
 	sorthoare(array, size, 0, size - 1);
