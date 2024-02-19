@@ -36,15 +36,22 @@ index++;
  */
 void merge_bitonic(bool boolean, int *subarray, size_t size, size_t first_size)
 {
-int *st, *nd;
-
-if (size > 1)
+size_t step = 1;
+if (size <= 1)
 {
-st = subarray;
-nd = subarray + (size / 2);
-bitoniComp(boolean, subarray, size);
-merge_bitonic(boolean, st, size / 2, first_size);
-merge_bitonic(boolean, nd, size / 2, first_size);
+return;
+}
+while (step < size)
+{
+int *st = subarray;
+int *nd = subarray + step;
+while (nd < subarray + size)
+{
+bitoniComp(boolean, st, step);
+st += 2 * step;
+nd += 2 * step;
+}
+step *= 2;
 }
 }
 
