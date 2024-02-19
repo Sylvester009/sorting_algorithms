@@ -11,11 +11,11 @@ typedef enum kind_e
 } kind_t;
 
 /**
- * struct card_s - Playing card
+ * struct card_s - this Plays as a card
  *
- * @value: Value of the card
+ * @value: it is the Value of the card
  * From "Ace" to "King"
- * @kind: Kind of the card
+ * @kind: this is Kind of the card
  */
 typedef struct card_s
 {
@@ -24,11 +24,11 @@ typedef struct card_s
 } card_t;
 
 /**
- * struct deck_node_s - Deck of card
+ * struct deck_node_s - this is the Deck of card
  *
- * @card: Pointer to the card of the node
- * @prev: Pointer to the previous node of the list
- * @next: Pointer to the next node of the list
+ * @card: it Points  to the card of the node
+ * @prev:this will  Point to the previous node of the list
+ * @next: Points to the next node of the list
  */
 typedef struct deck_node_s
 {
