@@ -15,26 +15,30 @@
  */
 int p_hoare(int *array, size_t size, int start, int end)
 {
-	int pivot, up, down;
+    int pivot, up, down;
 
-	pivot = array[end];
-	for (up = start - 1, down = end + 1; up < down;)
-	{
-		do {
-			up++;
-		} while (array[up] < pivot);
-		do {
-			down--;
-		} while (array[down] > pivot);
+    pivot = array[end];
+    up = start - 1;
+    down = end + 1;
 
-		if (up < down)
-		{
-			integer_swapping(array + up, array + down);
-			print_array(array, size);
-		}
-	}
+    while (up < down)
+    {
+        do {
+            up++;
+        } while (array[up] < pivot);
 
-	return (up);
+        do {
+            down--;
+        } while (array[down] > pivot);
+
+        if (up < down)
+        {
+            integer_swapping(array + up, array + down);
+            print_array(array, size);
+        }
+    }
+
+    return (up);
 }
 
 /**
