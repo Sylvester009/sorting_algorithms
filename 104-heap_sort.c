@@ -8,33 +8,25 @@
  * @end: The index of the base row of the tree.
  * @start: The root node of the binary tree.
  */
-
 void ConvertToHeap(int *array, size_t size, size_t end, size_t start)
 {
-    std::stack<size_t> stack;
-    stack.push(start);
+	size_t left, right, large;
 
-    while (!stack.empty())
-    {
-        size_t current = stack.top();
-        stack.pop();
+	left = 2 * start + 1;
+	right = 2 * start + 2;
+	large = start;
 
-        size_t left = 2 * current + 1;
-        size_t right = 2 * current + 2;
-        size_t largest = current;
+	while (left < end && array[left] > array[large])
+		large = left;
+	if (right < end && array[right] > array[large])
+		large = right;
 
-        if (left < end && array[left] > array[largest])
-            largest = left;
-        if (right < end && array[right] > array[largest])
-            largest = right;
-
-        if (largest != current)
-        {
-            std::swap(array[current], array[largest]);
-            print_array(array, size);
-            stack.push(largest);
-        }
-    }
+	while (large != start)
+	{
+		ints_swapping(array + start, array + large);
+		print_array(array, size);
+		ConvertToHeap(array, size, end, large);
+	}
 }
 
 /**
