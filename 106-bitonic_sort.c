@@ -34,7 +34,7 @@ index++;
  * @size: the number of elements in 'x'(subarray)
  * @first_size: the number of elements in source array being sorted
  */
-void merge_bitonic(bool boolean, int *subarray, size_t size, size_t first_size)
+void merge_bitonic(bool boolean, int *subarray, size_t size )
 {
 size_t step = 1;
 if (size <= 1)
