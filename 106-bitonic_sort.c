@@ -34,24 +34,17 @@ index++;
  * @size: the number of elements in 'x'(subarray)
  * @first_size: the number of elements in source array being sorted
  */
-void merge_bitonic(bool boolean, int *subarray, size_t size )
+void merge_bitonic(bool boolean, int *subarray, size_t size, size_t first_size)
 {
-size_t step = 1;
-if (size <= 1)
+int *st, *nd;
+
+while (size > 1)
 {
-return;
-}
-while (step < size)
-{
-int *st = subarray;
-int *nd = subarray + step;
-while (nd < subarray + size)
-{
-bitoniComp(boolean, st, step);
-st += 2 * step;
-nd += 2 * step;
-}
-step *= 2;
+st = subarray;
+nd = subarray + (size / 2);
+bitoniComp(boolean, subarray, size);
+merge_bitonic(boolean, st, size / 2, first_size);
+merge_bitonic(boolean, nd, size / 2, first_size);
 }
 }
 
