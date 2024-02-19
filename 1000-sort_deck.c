@@ -64,29 +64,30 @@ char gettervalues(deck_node_t *card)
  * @deck: this is a pointer thst points to  the head of
  * a deck_node_t doubly-linked list.
  */
-void insertion_by_sorting(deck_node_t **deck)
-{
-	deck_node_t *iteration, *insert, *tmp;
+void insertion_by_sorting(deck_node_t **deck) {
+    deck_node_t *iteration, *insert, *tmp;
 
-	for (iteration = (*deck)->next; iteration != NULL; iteration = tmp)
-	{
-		tmp = iteration->next;
-		insert = iteration->prev;
-		while (insert != NULL && insert->card->kind > iteration->card->kind)
-		{
-			insert->next = iteration->next;
-			if (iteration->next != NULL)
-				iteration->next->prev = insert;
-			iteration->prev = insert->prev;
-			iteration->next = insert;
-			if (insert->prev != NULL)
-				insert->prev->next = iteration;
-			else
-				*deck = iteration;
-			insert->prev = iteration;
-			insert = iteration->prev;
-		}
-	}
+    iteration = (*deck)->next;
+    while (iteration != NULL) {
+        tmp = iteration->next;
+        insert = iteration->prev;
+
+        while (insert != NULL && insert->card->kind > iteration->card->kind) {
+            insert->next = iteration->next;
+            if (iteration->next != NULL)
+                iteration->next->prev = insert;
+            iteration->prev = insert->prev;
+            iteration->next = insert;
+            if (insert->prev != NULL)
+                insert->prev->next = iteration;
+            else
+                *deck = iteration;
+            insert->prev = iteration;
+            insert = iteration->prev;
+        }
+
+        iteration = tmp;
+    }
 }
 
 /**
@@ -97,29 +98,31 @@ void insertion_by_sorting(deck_node_t **deck)
  */
 void sorting_value(deck_node_t **deck)
 {
-	deck_node_t *iteration, *insert, *tmp;
+    deck_node_t *iteration, *insert, *tmp;
 
-	for (iteration = (*deck)->next; iteration != NULL; iteration = tmp)
-	{
-		tmp = iteration->next;
-		insert = iteration->prev;
-		while (insert != NULL &&
-		       insert->card->kind == iteration->card->kind &&
-		       gettervalues(insert) > gettervalues(iteration))
-		{
-			insert->next = iteration->next;
-			if (iteration->next != NULL)
-				iteration->next->prev = insert;
-			iteration->prev = insert->prev;
-			iteration->next = insert;
-			if (insert->prev != NULL)
-				insert->prev->next = iteration;
-			else
-				*deck = iteration;
-			insert->prev = iteration;
-			insert = iteration->prev;
-		}
-	}
+    iteration = (*deck)->next;
+    while (iteration != NULL)
+    {
+        tmp = iteration->next;
+        insert = iteration->prev;
+        while (insert != NULL &&
+               insert->card->kind == iteration->card->kind &&
+               gettervalues(insert) > gettervalues(iteration))
+        {
+            insert->next = iteration->next;
+            if (iteration->next != NULL)
+                iteration->next->prev = insert;
+            iteration->prev = insert->prev;
+            iteration->next = insert;
+            if (insert->prev != NULL)
+                insert->prev->next = iteration;
+            else
+                *deck = iteration;
+            insert->prev = iteration;
+            insert = iteration->prev;
+        }
+        iteration = tmp;
+    }
 }
 
 /**
@@ -129,7 +132,7 @@ void sorting_value(deck_node_t **deck)
  */
 void sort_deck(deck_node_t **deck)
 {
-	if (deck == NULL || *deck == NULL || (*deck)->next == NULL)
+	while (deck == NULL || *deck == NULL || (*deck)->next == NULL)
 		return;
 
 	insertion_by_sorting(deck);
