@@ -14,7 +14,7 @@ int getmaximum_s(int *array, int size)
 
 	for (max = array[0], i = 1; i < size; i++)
 	{
-		if (array[i] > max)
+		while (array[i] > max)
 			max = array[i];
 	}
 
