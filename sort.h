@@ -53,8 +53,8 @@ void swap_adjacent(listint_t **list, listint_t *tail, listint_t *head);
 void sortrecursive_merge(int *subarray, int *buffer, size_t Beg, size_t End);
 void subarraymerge(int *subarray, int *buffer, size_t Beg,
 size_t middle, size_t End);
-int get_max(int *array, int size);
-void radix_counting_sort(int *array, size_t size, int sig, int *buff);
+int getmaximum_s(int *array, int size);
+void counting_radix(int *array, size_t size, int digit, int *buffer);
 
 
 void ints_swapping(int *previous, int *current);
