@@ -2,30 +2,30 @@
 
 
 /**
- * max_heapify - Turn a binary tree into a complete binary heap.
+ * ConvertToHeap - Turn a binary tree into a complete binary heap.
  * @array: An array of integers representing a binary tree.
  * @size: The size of the array/tree.
- * @base: The index of the base row of the tree.
- * @root: The root node of the binary tree.
+ * @end: The index of the base row of the tree.
+ * @start: The root node of the binary tree.
  */
-void max_heapify(int *array, size_t size, size_t base, size_t root)
+void ConvertToHeap(int *array, size_t size, size_t end, size_t start)
 {
 	size_t left, right, large;
 
-	left = 2 * root + 1;
-	right = 2 * root + 2;
-	large = root;
+	left = 2 * start + 1;
+	right = 2 * start + 2;
+	large = start;
 
-	if (left < base && array[left] > array[large])
+	if (left < end && array[left] > array[large])
 		large = left;
-	if (right < base && array[right] > array[large])
+	if (right < end && array[right] > array[large])
 		large = right;
 
-	if (large != root)
+	if (large != start)
 	{
-		integerswapping(array + root, array + large);
+		ints_swapping(array + start, array + large);
 		print_array(array, size);
-		max_heapify(array, size, base, large);
+		ConvertToHeap(array, size, end, large);
 	}
 }
 
@@ -46,12 +46,24 @@ void heap_sort(int *array, size_t size)
 		return;
 
 	for (i = (size / 2) - 1; i >= 0; i--)
-		max_heapify(array, size, size, i);
+		ConvertToHeap(array, size, size, i);
 
 	for (i = size - 1; i > 0; i--)
 	{
-		integerswapping(array, array + i);
+		ints_swapping(array, array + i);
 		print_array(array, size);
-		max_heapify(array, size, i, 0);
+		ConvertToHeap(array, size, i, 0);
 	}
+}
+/**
+ * ints_swapping - this is the Swap between two int in an array.
+ * @current: The first int to be swap.
+ * @previous: The second int to be swap.
+ */
+void ints_swapping(int *previous, int *current)
+{
+	int tmp;
+	tmp = *previous;
+	*previous = *current;
+	*current = tmp;
 }
