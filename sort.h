@@ -60,5 +60,8 @@ void merge_bitonic(bool boolean, int *subarray, size_t size, size_t first_size);
 void bitonic_sort_r(bool boolean, int *subarray, size_t size, size_t first_size);
 void ints_swapping(int *previous, int *current);
 void ConvertToHeap(int *array, size_t size, size_t end, size_t start);
+void swap_ints(int *a, int *b);
+int hoare_partition(int *array, size_t size, int left, int right);
+void hoare_sort(int *array, size_t size, int left, int right);
 
 #endif /* SORT_H */
