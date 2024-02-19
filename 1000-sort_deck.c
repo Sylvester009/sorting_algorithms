@@ -95,7 +95,7 @@ void insertion_by_sorting(deck_node_t **deck)
  * @deck: this is a  pointer that points to the
  * head of a deck_node_t doubly-linked list.
  */
-void sorting_value(deck_node_t **head)
+void sorting_value(deck_node_t **deck)
 {
 	deck_node_t *iteration, *insert, *tmp;
 
