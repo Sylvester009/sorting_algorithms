@@ -41,7 +41,7 @@ void counting_radix(int *array, size_t size, int digit, int *buffer)
 	for (index = 0; index < 10; index++)
 		arg_c[index] += arg_c[index - 1];
 
-	for (index = size - 1; (int)index >= 0; i--)
+	for (index = size - 1; (int)index >= 0; index--)
 	{
 		buffer[arg_c[(array[index] / digit) % 10] - 1] = array[index];
 		arg_c[(array[index] / digit) % 10] -= 1;
