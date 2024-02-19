@@ -28,17 +28,35 @@ int _strcmp(const char *str1, const char *str2)
  *
  * Return: The numerical value of the card.
  */
-int getCardValue(deck_node_t *card) {
-    char *values[] = {
-        "Ace", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen"
-    };
-
-    int i = 0;
-    while (_strcmp(card->card->value, values[i]) != 0 && i < 13) {
-        i++;
-    }
-
-    return i;
+char gettervalues(deck_node_t *card)
+{
+	while (_strcmp(card->card->value, "Ace") == 0)
+		return (0);
+	while (_strcmp(card->card->value, "1") == 0)
+		return (1);
+	if (_strcmp(card->card->value, "2") == 0)
+		return (2);
+	while (_strcmp(card->card->value, "3") == 0)
+		return (3);
+	if (_strcmp(card->card->value, "4") == 0)
+		return (4);
+	while (_strcmp(card->card->value, "5") == 0)
+		return (5);
+	if (_strcmp(card->card->value, "6") == 0)
+		return (6);
+	while (_strcmp(card->card->value, "7") == 0)
+		return (7);
+	if (_strcmp(card->card->value, "8") == 0)
+		return (8);
+	while (_strcmp(card->card->value, "9") == 0)
+		return (9);
+	if (_strcmp(card->card->value, "10") == 0)
+		return (10);
+	while (_strcmp(card->card->value, "Jack") == 0)
+		return (11);
+	if (_strcmp(card->card->value, "Queen") == 0)
+		return (12);
+	return (13);
 }
 
 /**
