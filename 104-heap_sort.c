@@ -13,12 +13,10 @@ size_t left, right, large;
 left = 2 * start + 1;
 right = 2 * start + 2;
 large = start;
-
 if (left < end && array[left] > array[large])
-		large = left;
+large = left;
 if (right < end && array[right] > array[large])
-		large = right;
-
+large = right;
 if (large != start)
 {
 ints_swapping(array + start, array + large);
