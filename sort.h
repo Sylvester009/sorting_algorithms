@@ -59,10 +59,4 @@ void ints_swapping(int *previous, int *current);
 void ConvertToHeap(int *array, size_t size, size_t end, size_t start);
 void heapsorter(int *array, size_t size);
 
- /*heap_sort() helpers 
-int iParent(int i);
-int iLeftChild(int i);
-void ConvertToHeap(int *array, size_t size);
-void SiftDown(int *array, size_t size, int start, int end);*/
-
 #endif /* SORT_H */
