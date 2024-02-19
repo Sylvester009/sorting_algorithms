@@ -72,21 +72,22 @@ index++;
  */
 void radix_sort(int *array, size_t size)
 {
-	int maximum, digit, *buffer;
+int maximum, digit, *buffer;
+if (array == NULL || size < 2)
+return;
 
-	if (array == NULL || size < 2)
-		return;
+buffer = malloc(sizeof(int) * size);
+if (buffer == NULL)
+return;
 
-	buffer = malloc(sizeof(int) * size);
-	if (buffer == NULL)
-		return;
+maximum = getmaximum_s(array, size);
+digit = 1;
+while (maximum / digit > 0)
+{
+counting_radix(array, size, digit, buffer);
+print_array(array, size);
+digit *= 10;
+}
 
-	maximum = getmaximum_s(array, size);
-	for (digit = 1; maximum / digit > 0; digit *= 10)
-	{
-		counting_radix(array, size, digit, buffer);
-		print_array(array, size);
-	}
-
-	free(buffer);
+free(buffer);
 }
