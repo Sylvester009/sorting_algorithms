@@ -7,7 +7,7 @@
  * @str2: This the second string to be compared.
  *
  * Return: return Positive byte difference if str1 > str2
- *         0 if str1 == str2
+ * 0 if str1 == str2
  */
 int _strcmp(const char *str1, const char *str2)
 {
@@ -63,10 +63,12 @@ return (13);
  * @deck: this is a pointer thst points to  the head of
  * a deck_node_t doubly-linked list.
  */
-void insertion_by_sorting(deck_node_t **deck) {
+void insertion_by_sorting(deck_node_t **deck)
+{
 deck_node_t *iteration, *insert, *tmp;
 iteration = (*deck)->next;
-while (iteration != NULL) {
+while (iteration != NULL)
+{
 tmp = iteration->next;
 insert = iteration->prev;
 
