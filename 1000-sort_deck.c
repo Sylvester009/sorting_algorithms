@@ -99,7 +99,7 @@ void sorting_value(deck_node_t **deck)
 {
 	deck_node_t *iteration, *insert, *tmp;
 
-	for (iteration = (*head)->next; iteration != NULL; iteration = tmp)
+	for (iteration = (*deck)->next; iteration != NULL; iteration = tmp)
 	{
 		tmp = iteration->next;
 		insert = iteration->prev;
