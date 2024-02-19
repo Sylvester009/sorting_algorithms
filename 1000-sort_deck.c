@@ -28,20 +28,17 @@ int _strcmp(const char *str1, const char *str2)
  *
  * Return: The numerical value of the card.
  */
-int gettervalues(deck_node_t *card) {
-    const char *cardValues[] = {
+int getCardValue(deck_node_t *card) {
+    char *values[] = {
         "Ace", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen"
     };
-    
-    const int numCardValues = sizeof(cardValues) / sizeof(cardValues[0]);
-    
-    for (int i = 0; i < numCardValues; i++) {
-        if (_strcmp(card->card->value, cardValues[i]) == 0) {
-            return i;
-        }
+
+    int i = 0;
+    while (_strcmp(card->card->value, values[i]) != 0 && i < 13) {
+        i++;
     }
-    
-    return 13;
+
+    return i;
 }
 
 /**
