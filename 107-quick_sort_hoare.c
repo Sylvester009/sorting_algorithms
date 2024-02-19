@@ -23,12 +23,10 @@ while (up < down)
 {
 do {
 up++;
-}
-while (array[up] < pivot);
+} while (array[up] < pivot);
 do {
 down--;
-}
-while (array[down] > pivot);
+} while (array[down] > pivot);
 if (up < down)
 {
 integer_swapping(array + up, array + down);
