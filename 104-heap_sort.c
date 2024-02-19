@@ -21,7 +21,7 @@ void ConvertToHeap(int *array, size_t size, size_t end, size_t start)
 	if (right < end && array[right] > array[large])
 		large = right;
 
-	while (large != start)
+	if (large != start)
 	{
 		ints_swapping(array + start, array + large);
 		print_array(array, size);
