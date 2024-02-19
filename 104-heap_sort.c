@@ -10,23 +10,25 @@
  */
 void ConvertToHeap(int *array, size_t size, size_t end, size_t start)
 {
-	size_t left, right, large;
+    while (true)
+    {
+        size_t left = 2 * start + 1;
+        size_t right = 2 * start + 2;
+        size_t large = start;
 
-	left = 2 * start + 1;
-	right = 2 * start + 2;
-	large = start;
+        if (left < end && array[left] > array[large])
+            large = left;
+        if (right < end && array[right] > array[large])
+            large = right;
 
-	if (left < end && array[left] > array[large])
-		large = left;
-	if (right < end && array[right] > array[large])
-		large = right;
+        if (large == start)
+            break;
 
-	if (large != start)
-	{
-		ints_swapping(array + start, array + large);
-		print_array(array, size);
-		ConvertToHeap(array, size, end, large);
-	}
+        std::swap(array[start], array[large]);
+        print_array(array, size);
+
+        start = large;
+    }
 }
 
 /**
