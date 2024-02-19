@@ -55,7 +55,7 @@ void sorthoare(int *array, size_t size, int start, int end)
 {
 	int p;
 
-	if (end - start > 0)
+	while (end - start > 0)
 	{
 		p = p_hoare(array, size, start, end);
 		sorthoare(array, size, start, p - 1);
