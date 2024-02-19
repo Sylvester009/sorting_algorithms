@@ -30,7 +30,8 @@ int getmaximum_s(int *array, int size)
  * @buffer: this is a buffer that store the sorted array.
  */
 
-void counting_radix(int *array, size_t size, int digit, int *buffer) {
+void counting_radix(int *array, size_t size, int digit, int *buffer)
+{
 int arg_c[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 size_t index = 0;
 
