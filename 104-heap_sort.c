@@ -1,6 +1,4 @@
 #include "sort.h"
-#include <stack>
-
 /**
  * ConvertToHeap - Turn a binary tree into a complete binary heap.
  * @array: An array of integers representing a binary tree.
@@ -16,12 +14,12 @@ void ConvertToHeap(int *array, size_t size, size_t end, size_t start)
 	right = 2 * start + 2;
 	large = start;
 
-	if (left < end && array[left] > array[large])
+	while (left < end && array[left] > array[large])
 		large = left;
 	if (right < end && array[right] > array[large])
 		large = right;
 
-	if (large != start)
+	while (large != start)
 	{
 		ints_swapping(array + start, array + large);
 		print_array(array, size);
