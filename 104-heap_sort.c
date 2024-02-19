@@ -1,10 +1,10 @@
 #include "sort.h"
 /**
- * ConvertToHeap - Turn a binary tree into a complete binary heap.
- * @array: An array of integers representing a binary tree.
- * @size: The size of the array/tree.
- * @end: The index of the base row of the tree.
- * @start: The root node of the binary tree.
+ * ConvertToHeap - this will Turn a binarytree into  binary heap.
+ * @array: this is the  array of int type that represents a binary tree.
+ * @size: This is the  size of the array.
+ * @end: This is the index of the end of the tree.
+ * @start: The start node of the binary tree.
  */
 void ConvertToHeap(int *array, size_t size, size_t end, size_t start)
 {
@@ -13,7 +13,7 @@ size_t left, right, large;
 left = 2 * start + 1;
 right = 2 * start + 2;
 large = start;
-if (left < end && array[left] > array[large])
+while (left < end && array[left] > array[large])
 large = left;
 if (right < end && array[right] > array[large])
 large = right;
@@ -26,18 +26,18 @@ ConvertToHeap(array, size, end, large);
 }
 
 /**
- * heap_sort - Sort an array of integers in ascending
- *             order using the heap sort algorithm.
- * @array: An array of integers.
- * @size: The size of the array.
+ * heap_sort - it will Sort out arrays of int type in an
+ * ascending order using the heap sort algorithm method.
+ * @array: this is an  array of int type.
+ * @size: This is the size of the array.
  *
- * Description: Implements the sift-down heap sort
- * algorithm. Prints the array after each swap.
+ * Description: it will Implements the sift-down heap sort
+ * algorithm.
  */
 void heap_sort(int *array, size_t size)
 {
 int i;
-if (array == NULL || size < 2)
+while (array == NULL || size < 2)
 return;
 for (i = (size / 2) - 1; i >= 0; i--)
 ConvertToHeap(array, size, size, i);
