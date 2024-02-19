@@ -40,8 +40,8 @@ typedef struct deck_node_s
 
 void sort_deck(deck_node_t **deck);
 int _strcmp(const char *str1, const char *str2);
-char gettervalues(deck_node_t *point);
-void insertion_by_sorting(deck_node_t **head);
-void sorting_value(deck_node_t **head);
+char gettervalues(deck_node_t *card);
+void insertion_by_sorting(deck_node_t **deck);
+void sorting_value(deck_node_t **deck);
 
 #endif /* DECK_H */
