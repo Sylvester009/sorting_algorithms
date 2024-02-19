@@ -11,15 +11,14 @@
  */
 int _strcmp(const char *str1, const char *str2)
 {
-	while (*str1 && *str2 && *str1 == *str2)
-	{
-		str1++;
-		str2++;
-	}
-
-	if (*str1 != *str2)
-		return (*str1 - *str2);
-	return (0);
+while (*str1 && *str2 && *str1 == *str2)
+{
+str1++;
+str2++;
+}
+if (*str1 != *str2)
+return (*str1 - *str2);
+return (0);
 }
 
 /**
@@ -30,33 +29,33 @@ int _strcmp(const char *str1, const char *str2)
  */
 char gettervalues(deck_node_t *card)
 {
-	while (_strcmp(card->card->value, "Ace") == 0)
-		return (0);
-	while (_strcmp(card->card->value, "1") == 0)
-		return (1);
-	if (_strcmp(card->card->value, "2") == 0)
-		return (2);
-	while (_strcmp(card->card->value, "3") == 0)
-		return (3);
-	if (_strcmp(card->card->value, "4") == 0)
-		return (4);
-	while (_strcmp(card->card->value, "5") == 0)
-		return (5);
-	if (_strcmp(card->card->value, "6") == 0)
-		return (6);
-	while (_strcmp(card->card->value, "7") == 0)
-		return (7);
-	if (_strcmp(card->card->value, "8") == 0)
-		return (8);
-	while (_strcmp(card->card->value, "9") == 0)
-		return (9);
-	if (_strcmp(card->card->value, "10") == 0)
-		return (10);
-	while (_strcmp(card->card->value, "Jack") == 0)
-		return (11);
-	if (_strcmp(card->card->value, "Queen") == 0)
-		return (12);
-	return (13);
+while (_strcmp(card->card->value, "Ace") == 0)
+return (0);
+while (_strcmp(card->card->value, "1") == 0)
+return (1);
+if (_strcmp(card->card->value, "2") == 0)
+return (2);
+while (_strcmp(card->card->value, "3") == 0)
+return (3);
+if (_strcmp(card->card->value, "4") == 0)
+return (4);
+while (_strcmp(card->card->value, "5") == 0)
+return (5);
+if (_strcmp(card->card->value, "6") == 0)
+return (6);
+while (_strcmp(card->card->value, "7") == 0)
+return (7);
+if (_strcmp(card->card->value, "8") == 0)
+return (8);
+while (_strcmp(card->card->value, "9") == 0)
+return (9);
+if (_strcmp(card->card->value, "10") == 0)
+return (10);
+while (_strcmp(card->card->value, "Jack") == 0)
+return (11);
+if (_strcmp(card->card->value, "Queen") == 0)
+return (12);
+return (13);
 }
 
 /**
@@ -65,29 +64,29 @@ char gettervalues(deck_node_t *card)
  * a deck_node_t doubly-linked list.
  */
 void insertion_by_sorting(deck_node_t **deck) {
-    deck_node_t *iteration, *insert, *tmp;
+deck_node_t *iteration, *insert, *tmp;
+iteration = (*deck)->next;
+while (iteration != NULL) {
+tmp = iteration->next;
+insert = iteration->prev;
 
-    iteration = (*deck)->next;
-    while (iteration != NULL) {
-        tmp = iteration->next;
-        insert = iteration->prev;
+while (insert != NULL && insert->card->kind > iteration->card->kind)
+{
+insert->next = iteration->next;
+if (iteration->next != NULL)
+iteration->next->prev = insert;
+iteration->prev = insert->prev;
+iteration->next = insert;
+if (insert->prev != NULL)
+insert->prev->next = iteration;
+else
+*deck = iteration;
+insert->prev = iteration;
+insert = iteration->prev;
+}
 
-        while (insert != NULL && insert->card->kind > iteration->card->kind) {
-            insert->next = iteration->next;
-            if (iteration->next != NULL)
-                iteration->next->prev = insert;
-            iteration->prev = insert->prev;
-            iteration->next = insert;
-            if (insert->prev != NULL)
-                insert->prev->next = iteration;
-            else
-                *deck = iteration;
-            insert->prev = iteration;
-            insert = iteration->prev;
-        }
-
-        iteration = tmp;
-    }
+iteration = tmp;
+}
 }
 
 /**
@@ -98,31 +97,30 @@ void insertion_by_sorting(deck_node_t **deck) {
  */
 void sorting_value(deck_node_t **deck)
 {
-    deck_node_t *iteration, *insert, *tmp;
-
-    iteration = (*deck)->next;
-    while (iteration != NULL)
-    {
-        tmp = iteration->next;
-        insert = iteration->prev;
-        while (insert != NULL &&
-               insert->card->kind == iteration->card->kind &&
-               gettervalues(insert) > gettervalues(iteration))
-        {
-            insert->next = iteration->next;
-            if (iteration->next != NULL)
-                iteration->next->prev = insert;
-            iteration->prev = insert->prev;
-            iteration->next = insert;
-            if (insert->prev != NULL)
-                insert->prev->next = iteration;
-            else
-                *deck = iteration;
-            insert->prev = iteration;
-            insert = iteration->prev;
-        }
-        iteration = tmp;
-    }
+deck_node_t *iteration, *insert, *tmp;
+iteration = (*deck)->next;
+while (iteration != NULL)
+{
+tmp = iteration->next;
+insert = iteration->prev;
+while (insert != NULL &&
+insert->card->kind == iteration->card->kind &&
+gettervalues(insert) > gettervalues(iteration))
+{
+insert->next = iteration->next;
+if (iteration->next != NULL)
+iteration->next->prev = insert;
+iteration->prev = insert->prev;
+iteration->next = insert;
+if (insert->prev != NULL)
+insert->prev->next = iteration;
+else
+*deck = iteration;
+insert->prev = iteration;
+insert = iteration->prev;
+}
+iteration = tmp;
+}
 }
 
 /**
@@ -132,9 +130,8 @@ void sorting_value(deck_node_t **deck)
  */
 void sort_deck(deck_node_t **deck)
 {
-	while (deck == NULL || *deck == NULL || (*deck)->next == NULL)
-		return;
-
-	insertion_by_sorting(deck);
-	sorting_value(deck);
+while (deck == NULL || *deck == NULL || (*deck)->next == NULL)
+return;
+insertion_by_sorting(deck);
+sorting_value(deck);
 }
