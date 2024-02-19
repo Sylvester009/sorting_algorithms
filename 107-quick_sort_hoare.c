@@ -15,30 +15,27 @@
  */
 int p_hoare(int *array, size_t size, int start, int end)
 {
-    int pivot, up, down;
-
-    pivot = array[end];
-    up = start - 1;
-    down = end + 1;
-
-    while (up < down)
-    {
-        do {
-            up++;
-        } while (array[up] < pivot);
-
-        do {
-            down--;
-        } while (array[down] > pivot);
-
-        if (up < down)
-        {
-            integer_swapping(array + up, array + down);
-            print_array(array, size);
-        }
-    }
-
-    return (up);
+int pivot, up, down;
+pivot = array[end];
+up = start - 1;
+down = end + 1;
+while (up < down)
+{
+do {
+up++;
+}
+while (array[up] < pivot);
+do {
+down--;
+}
+while (array[down] > pivot);
+if (up < down)
+{
+integer_swapping(array + up, array + down);
+print_array(array, size);
+}
+}
+return (up);
 }
 
 /**
@@ -53,14 +50,13 @@ int p_hoare(int *array, size_t size, int start, int end)
  */
 void sorthoare(int *array, size_t size, int start, int end)
 {
-	int p;
-
-	if (end - start > 0)
-	{
-		p = p_hoare(array, size, start, end);
-		sorthoare(array, size, start, p - 1);
-		sorthoare(array, size, p, end);
-	}
+int p;
+if (end - start > 0)
+{
+p = p_hoare(array, size, start, end);
+sorthoare(array, size, start, p - 1);
+sorthoare(array, size, p, end);
+}
 }
 
 
@@ -71,11 +67,10 @@ void sorthoare(int *array, size_t size, int start, int end)
  */
 void integer_swapping(int *previous, int *current)
 {
-	int tmp;
-
-	tmp = *previous;
-	*previous = *current;
-	*current = tmp;
+int tmp;
+tmp = *previous;
+*previous = *current;
+*current = tmp;
 }
 /**
  * quick_sort_hoare - it Sorts arrays of int type in an
@@ -88,8 +83,7 @@ void integer_swapping(int *previous, int *current)
  */
 void quick_sort_hoare(int *array, size_t size)
 {
-	while (array == NULL || size < 2)
-		return;
-
-	sorthoare(array, size, 0, size - 1);
+while (array == NULL || size < 2)
+return;
+sorthoare(array, size, 0, size - 1);
 }
