@@ -1,8 +1,6 @@
 #include "sort.h"
 #include <stdio.h>
-void bitoniComp(bool boolean, int *subarray, size_t size);
-void merge_bitonic(bool boolean, int *subarray, size_t size, size_t first_size);
-void bitonic_sort_r(bool boolean, int *subarray, size_t size, size_t first_size);
+
 /**
  * bitoniComp - this is a helper, and it sorts contents of current
  * subarray
@@ -40,7 +38,7 @@ void merge_bitonic(bool boolean, int *subarray, size_t size, size_t first_size)
 {
 int *st, *nd;
 
-while (size > 1)
+if (size > 1)
 {
 st = subarray;
 nd = subarray + (size / 2);
@@ -63,7 +61,7 @@ merge_bitonic(boolean, nd, size / 2, first_size);
 void sortbitonic(bool boolean, int *subarray, size_t size, size_t first_size)
 {
 int *st, *nd;
-while (size <= 1)
+if (size <= 1)
 return;
 st = subarray;
 nd = subarray + (size / 2);
@@ -86,7 +84,7 @@ print_array(subarray, size);
  */
 void bitonic_sort(int *array, size_t size)
 {
-while (!array || size == 0)
+if (!array || size == 0)
 return;
 sortbitonic(true, array, size, size);
 }
