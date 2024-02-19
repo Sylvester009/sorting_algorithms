@@ -12,7 +12,6 @@ void bitoniComp(bool boolean, int *subarray, size_t size)
 {
 size_t dist = size / 2;
 size_t index = 0;
-
 while (index < dist)
 {
 if ((subarray[index] > subarray[index + dist]) == boolean)
@@ -26,15 +25,16 @@ index++;
 }
 
 /**
- * merge_bitonic - this is the second recursive function,that sorts subarrays
- * through bitonic_compare, and merges
+ * merge_bitonic - this is the second recursive function,that
+ * sorts subarrays through bitonic_compare, and merges
  * @boolean: when a statement true, it sort in ascending order
  * and when false descending order
  * @subarray: this is the subarray in previous frame of recursion
  * @size: the number of elements in 'x'(subarray)
  * @first_size: the number of elements in source array being sorted
  */
-void merge_bitonic(bool boolean, int *subarray, size_t size, size_t first_size)
+void merge_bitonic(bool boolean, int *subarray, size_t size,
+size_t first_size)
 {
 int *st, *nd;
 
@@ -58,10 +58,11 @@ merge_bitonic(boolean, nd, size / 2, first_size);
  * @size: the number of elements in 'x'(subarray)
  * @first_size: the number of elements in source array being sorted
  */
-void sortbitonic(bool boolean, int *subarray, size_t size, size_t first_size)
+void sortbitonic(bool boolean, int *subarray, size_t size,
+size_t first_size)
 {
 int *st, *nd;
-if (size <= 1)
+while (size <= 1)
 return;
 st = subarray;
 nd = subarray + (size / 2);
@@ -84,7 +85,7 @@ print_array(subarray, size);
  */
 void bitonic_sort(int *array, size_t size)
 {
-if (!array || size == 0)
+while (!array || size == 0)
 return;
 sortbitonic(true, array, size, size);
 }
