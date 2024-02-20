@@ -34,11 +34,11 @@ void swap_adjacent(listint_t **list, listint_t *tail, listint_t *head)
  * @fowardswapped: boolean indicating if a forward swap occurred
  */
 void forward_pass(listint_t **list, listint_t *temp,
-int s_Range, bool *fowardswapped)
+int *s_Range, bool *fowardswapped)
 {
 	int checks;
 
-	for (checks = 0; temp->next && checks < s_Range; checks++)
+	for (checks = 0; temp->next && checks < *s_Range; checks++)
 	{
 		if (temp->next->n < temp->n)
 		{
@@ -51,7 +51,7 @@ int s_Range, bool *fowardswapped)
 		}
 	}
 	if (!temp->next)
-		s_Range = checks;
+		*s_Range = checks;
 }
 
 /**
@@ -62,11 +62,11 @@ int s_Range, bool *fowardswapped)
  * @backwardSwapped: pointer indicating if a backward swap occurred
  */
 void backward_pass(listint_t **list, listint_t *temp,
-int s_Range, bool *backwardSwapped)
+int *s_Range, bool *backwardSwapped)
 {
 	int checks;
 
-	for (checks = 0; temp->prev && checks < s_Range; checks++)
+	for (checks = 0; temp->prev && checks < *s_Range; checks++)
 	{
 		if (temp->n < temp->prev->n)
 		{
@@ -98,14 +98,14 @@ void cocktail_sort_list(listint_t **list)
 	{
 		fowardswapped = backwardSwapped = false;
 
-		forward_pass(list, temp, s_Range, &fowardswapped);
+		forward_pass(list, temp, &s_Range, &fowardswapped);
 
 		if (fowardswapped)
 			temp = temp->prev;
 
 		s_Range--;
 
-		backward_pass(list, temp, s_Range, &backwardSwapped);
+		backward_pass(list, temp, &s_Range, &backwardSwapped);
 
 		if (backwardSwapped)
 			temp = temp->next;
