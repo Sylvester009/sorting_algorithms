@@ -33,8 +33,8 @@ print_list(*list);
 * backward_pass - does backswaps
 *@list: list to swap
 *@temp: node to current pointer
-@backwardSwapped: backward Swap
-@s_Range: range
+*@backwardSwapped: pointer to a boolean indicating if a backward swap occurred
+*@s_Range: range to be checked
 */
 void backward_pass(listint_t **list, listint_t *temp,
 bool *backwardSwapped, int s_Range)
