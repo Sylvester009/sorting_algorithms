@@ -10,7 +10,8 @@ void swap_adjacent(listint_t **list, listint_t *tail, listint_t *head)
 {
 listint_t *swap;
 
-if (tail->prev != NULL) {
+if (tail->prev != NULL)
+{
 tail->prev->next = head;
 }
 else
@@ -18,7 +19,8 @@ else
 *list = head;
 }
 
-if (head->next != NULL) {
+if (head->next != NULL)
+{
 head->next->prev = tail;
 }
 
@@ -41,7 +43,8 @@ print_list(*list);
 listint_t* forward_pass(listint_t **list, listint_t *temp, bool *forwardSwapped, int s_Range)
 {
 int checks;
-for (checks = 0; temp->next && checks < s_Range; checks++) {
+for (checks = 0; temp->next && checks < s_Range; checks++)
+{
 if (temp->next->n < temp->n)
 {
 swap_adjacent(list, temp, temp->next);
@@ -71,21 +74,30 @@ for (checks = 0; temp->prev && checks < s_Range; checks++)
 if (temp->n < temp->prev->n) {
 swap_adjacent(list, temp->prev, temp);
 *backwardSwapped = true;
-} else {
+}
+else
+{
 temp = temp->prev;
 }
 }
 return (temp);
 }
 
-/**/
-int count_remaining_nodes(listint_t *temp, int s_Range) {
-    int count = 0;
-    while (temp->next && count < s_Range) {
-        temp = temp->next;
-        count++;
-    }
-    return count;
+/*
+* count_remaining_nodes - counts the nodes remaining
+*@temp: pointer to the current node
+*@s_Range: the range
+*Return: nodes remaining
+*/
+int count_remaining_nodes(listint_t *temp, int s_Range)
+{
+int count = 0;
+while (temp->next && count < s_Range)
+{
+temp = temp->next;
+count++;
+}
+return count;
 }
 
 /**
@@ -104,14 +116,10 @@ temp = *list;
 while (1)
 {
 forwardSwapped = backwardSwapped = false;
-
 temp = forward_pass(list, temp, &forwardSwapped, s_Range);
-
 if (!temp->next)
 s_Range = count_remaining_nodes(temp, s_Range);
-
 temp = backward_pass(list, temp, &backwardSwapped, s_Range);
-
 if (!forwardSwapped && !backwardSwapped)
 break;
 }
