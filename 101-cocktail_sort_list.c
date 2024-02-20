@@ -29,6 +29,23 @@ swap->next = tail;
 print_list(*list);
 }
 
+void backward_pass(listint_t **list, listint_t *temp, bool *backwardSwapped, int s_Range)
+{
+int checks;
+
+for (checks = 0; temp->prev && checks < s_Range; checks++) {
+if (temp->n < temp->prev->n) {
+swap_adjacent(list, temp->prev, temp);
+*backwardSwapped = true;
+}
+else
+{
+temp = temp->prev;
+}
+}
+}
+
+
 /**
  * cocktail_sort_list - it is sorts a doubly_linked list of int type
  * in ascending order
@@ -62,18 +79,7 @@ s_Range = checks;
 if (fowardswapped)
 temp = temp->prev;
 s_Range--;
-for (checks = 0; temp->prev && checks < s_Range; checks++)
-{
-if (temp->n < temp->prev->n)
-{
-swap_adjacent(list, temp->prev, temp);
-backwardSwapped = true;
-}
-else
-{
-temp = temp->prev;
-}
-}
+backward_pass(list, temp, &backwardSwapped, s_Range);
 if (backwardSwapped)
 temp = temp->next;
 if (!fowardswapped && !backwardSwapped)
