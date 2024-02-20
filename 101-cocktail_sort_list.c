@@ -29,12 +29,22 @@ swap->next = tail;
 print_list(*list);
 }
 
-void backward_pass(listint_t **list, listint_t *temp, bool *backwardSwapped, int s_Range)
+/**
+* backward_pass - does backswaps
+*@list: list to swap
+*@temp: node to current pointer
+@backwardSwapped: backward Swap
+@s_Range: range
+*/
+void backward_pass(listint_t **list, listint_t *temp,
+bool *backwardSwapped, int s_Range)
 {
 int checks;
 
-for (checks = 0; temp->prev && checks < s_Range; checks++) {
-if (temp->n < temp->prev->n) {
+for (checks = 0; temp->prev && checks < s_Range; checks++)
+{
+if (temp->n < temp->prev->n)
+{
 swap_adjacent(list, temp->prev, temp);
 *backwardSwapped = true;
 }
