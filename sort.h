@@ -67,5 +67,6 @@ void sorthoare(int *array, size_t size, int start, int end);
 void integer_swapping(int *previous, int *current);
 listint_t* forward_pass(listint_t **list, listint_t *temp, bool *forwardSwapped, int s_Range);
 listint_t* backward_pass(listint_t **list, listint_t *temp, bool *backwardSwapped, int s_Range);
+int count_remaining_nodes(listint_t *temp, int s_Range);
 
 #endif /* SORT_H */
