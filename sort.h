@@ -65,6 +65,9 @@ void ConvertToHeap(int *array, size_t size, size_t end, size_t start);
 int p_hoare(int *array, size_t size, int start, int end);
 void sorthoare(int *array, size_t size, int start, int end);
 void integer_swapping(int *previous, int *current);
-void backward_pass(listint_t **list, listint_t *temp, bool *backwardSwapped, int s_Range);
+void forward_pass(listint_t **list, listint_t *temp,
+int *s_Range, bool *fowardswapped);
+void backward_pass(listint_t **list, listint_t *temp,
+int *s_Range, bool *backwardSwapped);
 
 #endif /* SORT_H */
