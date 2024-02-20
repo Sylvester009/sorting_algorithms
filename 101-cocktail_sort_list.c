@@ -78,6 +78,16 @@ temp = temp->prev;
 return (temp);
 }
 
+/**/
+int count_remaining_nodes(listint_t *temp, int s_Range) {
+    int count = 0;
+    while (temp->next && count < s_Range) {
+        temp = temp->next;
+        count++;
+    }
+    return count;
+}
+
 /**
  * cocktail_sort_list - it is sorts a doubly_linked list of int type
  * in ascending order
