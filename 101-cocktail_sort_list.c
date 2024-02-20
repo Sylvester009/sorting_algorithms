@@ -33,7 +33,8 @@ void swap_adjacent(listint_t **list, listint_t *tail, listint_t *head)
  * @s_Range: range to be checked
  * @fowardswapped: boolean indicating if a forward swap occurred
  */
-void forward_pass(listint_t **list, listint_t *temp, int *s_Range, bool *fowardswapped)
+void forward_pass(listint_t **list, listint_t *temp,
+int *s_Range, bool *fowardswapped)
 {
 	int checks;
 
@@ -58,9 +59,10 @@ void forward_pass(listint_t **list, listint_t *temp, int *s_Range, bool *fowards
  * @list: doubly linked list of int type to be sorted
  * @temp: current node pointer
  * @s_Range: range to be checked
- * @backwardSwapped: pointer to a boolean indicating if a backward swap occurred
+ * @backwardSwapped: pointer indicating if a backward swap occurred
  */
-void backward_pass(listint_t **list, listint_t *temp, int *s_Range, bool *backwardSwapped)
+void backward_pass(listint_t **list, listint_t *temp,
+int *s_Range, bool *backwardSwapped)
 {
 	int checks;
 
@@ -79,7 +81,7 @@ void backward_pass(listint_t **list, listint_t *temp, int *s_Range, bool *backwa
 }
 
 /**
- * cocktail_sort_list - sorts a doubly linked list of integers in ascending order
+ * cocktail_sort_list - sorts alist of integers in ascending order
  * @list: pointer to the head of the list
  */
 void cocktail_sort_list(listint_t **list)
